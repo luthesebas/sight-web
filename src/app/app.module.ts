@@ -4,10 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { ExploreModule } from './pages/explore/explore.module';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,13 @@ import { PageNotFoundComponent } from './common/page-not-found/page-not-found.co
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // App Modules
     ExploreModule,
-    AppRoutingModule
+
+    AppRoutingModule,
+
+    // Angular Material Modules
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
