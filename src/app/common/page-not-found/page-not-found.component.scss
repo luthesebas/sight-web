@@ -1,0 +1,41 @@
+.pageNotFound {
+    text-align: center;
+}
+
+.pageNotFound img {
+    max-width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.pageNotFound h1 {
+    font-size: 64pt;
+    margin: 0;
+}
+
+.pageNotFound a {
+    font-size: 16pt;
+    margin: 32px 0;
+    line-height: 48px;
+}
+
+.pageNotFound div.container {
+    position: relative;
+    text-align: center;
+}
+
+.pageNotFound div.container div.bottom {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%);
+}
+
+.pageNotFound div.container div.top {
+    position: absolute;
+    top: 32px;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%);
+}
