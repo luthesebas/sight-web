@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ExploreRoutingModule } from './explore-routing.module';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
+import { RecipeModule } from 'src/app/common/recipe/recipe.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,7 @@ import { ExploreViewComponent } from './explore-view/explore-view.component';
   ],
   imports: [
     CommonModule,
+    RecipeModule,
     ExploreRoutingModule
   ]
 })
