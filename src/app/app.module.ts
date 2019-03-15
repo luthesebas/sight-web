@@ -6,9 +6,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ExploreModule } from './pages/explore/explore.module';
-import { HeaderComponent } from './common/header/header.component';
-import { FooterComponent } from './common/footer/footer.component';
-import { PageNotFoundComponent } from './common/page-not-found/page-not-found.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { MatButtonModule } from '@angular/material/button';
 
