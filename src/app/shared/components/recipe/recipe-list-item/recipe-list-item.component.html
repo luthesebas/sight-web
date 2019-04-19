@@ -1,3 +1,19 @@
-<h3>{{recipe?.details?.title}}</h3>
-<span>{{recipe.rating.averageScore}} *** ({{recipe.rating.totalRatings}})</span>
-<p>{{recipe?.details?.description}}</p>
+<mat-card class="recipe-card">
+  <mat-card-header>
+    <mat-card-title>
+      {{recipe?.details?.title}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{recipe.rating.averageScore}} * * * * * ({{recipe.rating.totalRatings}})
+    </mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="recipe.getCoverImageSource()">
+  <mat-card-content>
+    <p>
+      {{recipe?.details?.description}}
+    </p>
+  </mat-card-content>
+  <mat-card-actions [align]="'end'">
+    <button mat-raised-button color="primary">Details</button>
+  </mat-card-actions>
+</mat-card>
