@@ -4,9 +4,9 @@ import { RecipeDetails } from './recipe-details';
 export class Recipe {
 
   id: number;
-  details: RecipeDetails;
+  details = new RecipeDetails();
   rating = new Rating();
-  imageSources: string[];
+  imageSources: string[] = [];
 
   public getCoverImageSource(): string {
     if (this.imageSources && this.imageSources.length >= 0) {
