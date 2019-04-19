@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Recipe } from 'src/app/shared/models/recipe/recipe';
 
 @Component({
   selector: 'app-recipe-list-item',
@@ -8,6 +9,9 @@ import { Component, OnInit } from '@angular/core';
 export class RecipeListItemComponent implements OnInit {
 
   constructor() { }
+
+  @Input()
+  public recipe: Recipe;
 
   ngOnInit() {
   }
