@@ -1,5 +1,5 @@
 export class Rating {
-    rated = false;
+    rated = 0;
     averageScore = 0;
     totalRatings = 0;
 }
