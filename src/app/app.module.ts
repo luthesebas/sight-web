@@ -22,12 +22,13 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+
     // App Modules
     ExploreModule,
 
     AppRoutingModule,
 
-    // Angular Material Modules
+    // Angular Material
     MatButtonModule,
   ],
   providers: [],
