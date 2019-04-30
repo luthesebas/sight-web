@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Rating } from '../../models/rating';
 
 @Component({
   selector: 'app-rating',
@@ -9,7 +10,20 @@ export class RatingComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  @Input() rating = new Rating();
+  @Input() maximum = 5;
+
+  ngOnInit() { }
+
+  public getIconName(index: number): string {
+    if (this.rating.averageScore >= index) {
+      return 'star';
+    } else {
+      if (this.rating.averageScore >= index - 0.45) {
+        return 'star_half';
+      }
+      return 'star_border';
+    }
   }
 
 }
