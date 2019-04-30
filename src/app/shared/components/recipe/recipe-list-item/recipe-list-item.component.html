@@ -4,7 +4,7 @@
       {{recipe?.details?.title}}
     </mat-card-title>
     <mat-card-subtitle>
-      {{recipe.rating.averageScore}} * * * * * ({{recipe.rating.totalRatings}})
+      <app-rating [rating]="recipe.rating"></app-rating>
     </mat-card-subtitle>
   </mat-card-header>
   <img mat-card-image [src]="recipe.getCoverImageSource()">
