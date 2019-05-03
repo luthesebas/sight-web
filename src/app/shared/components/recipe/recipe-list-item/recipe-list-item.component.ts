@@ -16,4 +16,9 @@ export class RecipeListItemComponent implements OnInit {
   ngOnInit() {
   }
 
+  public openDetailsOf(recipe: Recipe): void {
+    // TODO Open recipe details
+    console.log('Open recipe details...');
+  }
+
 }

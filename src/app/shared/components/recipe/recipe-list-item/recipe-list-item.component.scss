@@ -6,10 +6,15 @@
 
 .recipe-card > img {
   display: block;
-  margin: 0 auto 16px auto;
+  margin: 0 auto 0 auto;
+  padding-bottom: 16px;
   max-width: 400px;
 }
 
 img.cover-image {
   border-radius: 8px;
+}
+
+.clickable {
+  cursor: pointer;
 }
