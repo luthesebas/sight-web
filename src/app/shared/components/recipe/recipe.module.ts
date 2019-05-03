@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 
 import { RecipeListItemComponent } from './recipe-list-item/recipe-list-item.component';
 import { RecipeListComponent } from './recipe-list/recipe-list.component';
+import { RatingModule } from '../rating/rating.module';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RatingModule } from '../rating/rating.module';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { RatingModule } from '../rating/rating.module';
     // Angular Material
     MatCardModule,
     MatButtonModule,
+    MatIconModule
   ],
   exports: [
     RecipeListComponent
