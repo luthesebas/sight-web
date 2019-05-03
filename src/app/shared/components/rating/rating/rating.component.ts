@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Rating } from '../../models/rating';
+import { Rating } from '../../../models/rating';
 
 @Component({
   selector: 'app-rating',
