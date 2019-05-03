@@ -7,7 +7,7 @@
       <app-rating [rating]="recipe.rating"></app-rating>
     </mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="recipe.getCoverImageSource()">
+  <img mat-card-image class="cover-image" [src]="recipe.getCoverImageSource()">
   <mat-card-content>
     <p>
       {{recipe?.details?.description}}
