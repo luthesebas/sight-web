@@ -1,3 +1,19 @@
-<p>
-  header works!
-</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div class="logo-menu">
+      <img [src]="'./assets/happybelly.svg'">
+    </div>
+
+    <a mat-button [routerLink]="'/'">
+      <mat-icon>explore</mat-icon>
+      Entdecken
+    </a>
+
+    <span class="menu-spacer"></span>
+
+    <a mat-button [routerLink]="'/'">
+      <mat-icon>person_add</mat-icon>
+      Einloggen
+    </a>
+  </mat-toolbar-row>
+</mat-toolbar>
