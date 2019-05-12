@@ -1,21 +1,14 @@
 .pageNotFound {
-    text-align: center;
-}
+  text-align: center;
 
-.pageNotFound img {
+  img {
     max-width: 300px;
     height: auto;
     overflow: hidden;
     margin: 32px;
-}
+  }
 
-.pageNotFound h1 {
-    font-size: 2.5em;
-    margin: 0;
-}
-
-.pageNotFound a {
-    font-size: 1.2em;
-    margin: 32px 0;
-    line-height: 48px;
+  a {
+    margin: 32px 0 64px 0;
+  }
 }
