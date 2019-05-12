@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+
+@mixin app-footer-theme($theme) {
+  $primary: map-get($theme, primary);
+
+  .app-footer {
+    color: mat-color($theme, text);
+    color: white;
+    background-color: mat-color($primary);
+  }
+}
