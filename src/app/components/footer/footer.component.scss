@@ -1,0 +1,48 @@
+.app-footer {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .social-media-collection {
+    margin: 16px 0;
+    text-align: center;
+
+    a {
+      margin: 8px;
+    }
+  }
+
+  .navigation {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .link-collection {
+      //flex-grow: 1;
+      margin: 0 16px;
+      line-height: 1.5;
+
+      a {
+        display: block;
+      }
+    }
+  }
+
+  .logo {
+    text-align: center;
+    margin: 16px 0;
+
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 8px;
+      width: auto;
+      max-height: 32px;
+      min-height: 16px;
+    }
+  }
+}
