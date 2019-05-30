@@ -1,13 +1,23 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <div class="logo-menu">
-      <img [src]="'./assets/happybelly.svg'">
+      <img [src]="'./assets/happybelly.svg'" />
     </div>
 
     <a mat-button [routerLink]="'/'">
       <mat-icon>explore</mat-icon>
       Entdecken
     </a>
+    <button mat-button [matMenuTriggerFor]="cookbookMenu">
+      <mat-icon>book</mat-icon>
+      Kochbuch
+    </button>
+    <mat-menu #cookbookMenu="matMenu">
+      <a mat-button [routerLink]="'/'">
+        <mat-icon>bookmarks</mat-icon>
+        Meine Rezeptsammlungen
+      </a>
+    </mat-menu>
 
     <span class="menu-spacer"></span>
 
