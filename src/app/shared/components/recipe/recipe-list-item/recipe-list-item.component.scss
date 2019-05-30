@@ -5,17 +5,13 @@
 
   > img {
     display: block;
-    margin: 0 auto 0 auto;
-    padding-bottom: 16px;
+    margin: 0 auto 16px auto;
+    border-radius: 4px;
     max-width: 100%;
     height: auto;
   }
-}
 
-img.cover-image {
-  border-radius: 8px;
-}
-
-.clickable {
-  cursor: pointer;
+  .clickable {
+    cursor: pointer;
+  }
 }
