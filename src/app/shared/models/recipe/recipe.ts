@@ -9,11 +9,15 @@ export class Recipe {
   imageSources: string[] = [];
 
   public getCoverImageSource(): string {
-    if (this.imageSources && this.imageSources.length >= 0) {
-      return this.imageSources[0];
-    } else {
-      return undefined;
+    if (this.imageSources && this.imageSources.length > 0) {
+      const img = this.imageSources[0];
+      if (img && img.trim().length > 0) {
+        return img;
+      }
     }
+    return '';
+    // return 'assets/broken.png';
+    // return null;
   }
 
 }
