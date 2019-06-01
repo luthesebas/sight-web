@@ -14,8 +14,7 @@ export class RecipeListComponent implements OnInit {
   @Input()
   public recipes: Recipe[];
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public trackRecipe(index: number, recipe: Recipe): number {
     return recipe ? recipe.id : undefined;
