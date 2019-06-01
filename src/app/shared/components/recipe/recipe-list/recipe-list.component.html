@@ -1,7 +1,5 @@
-<div>
-  <app-recipe-list-item
-    *ngFor="let recipe of recipes; trackBy: trackRecipe"
-    [recipe]="recipe"
-  >
-  </app-recipe-list-item>
-</div>
+<app-recipe-list-item
+  *ngFor="let recipe of recipes; trackBy: trackRecipe"
+  [recipe]="recipe"
+>
+</app-recipe-list-item>
