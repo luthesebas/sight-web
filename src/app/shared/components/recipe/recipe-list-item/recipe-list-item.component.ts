@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+
 import { Recipe } from 'src/app/shared/models/recipe/recipe';
 
 @Component({
@@ -13,12 +14,11 @@ export class RecipeListItemComponent implements OnInit {
   @Input()
   public recipe: Recipe;
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   public openDetailsOf(recipe: Recipe): void {
     // TODO Open recipe details
-    console.log('Open recipe details...');
+    console.log('[TODO] Open recipe details');
   }
 
 }
