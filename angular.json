@@ -136,5 +136,8 @@
       }
     }
   },
-  "defaultProject": "sight-web"
+  "defaultProject": "sight-web",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
