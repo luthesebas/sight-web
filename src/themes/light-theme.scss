@@ -3,8 +3,86 @@ $light-theme-primary: mat-palette($mat-green, 600, 300, 900) !default;
 $light-theme-accent: mat-palette($mat-green, 600, 300, 900) !default;
 $light-theme-warn: mat-palette($mat-red, 600) !default;
 
-$light-theme: mat-light-theme(
+$app-light-theme-base: mat-light-theme(
   $light-theme-primary,
   $light-theme-accent,
   $light-theme-warn
 );
+
+// Foreground palette for light themes.
+@function getMatLightThemeForegroundPalette($color) {
+  @return (
+    base:              $color,
+    divider:           rgba($color, 0.12), //rgba(black, 0.12),
+    dividers:          rgba($color, 0.12), //rgba(black, 0.12),
+    disabled:          rgba($color, 0.38), //rgba(black, 0.38),
+    disabled-button:   rgba($color, 0.26),
+    disabled-text:     rgba($color, 0.38), //rgba(black, 0.38),
+    elevation:         $color,
+    hint-text:         rgba($color, 0.38), //rgba(black, 0.38),
+    secondary-text:    rgba($color, 0.54), //rgba(black, 0.54),
+    icon:              rgba($color, 0.54),
+    icons:             rgba($color, 0.54),
+    text:              rgba($color, 0.87),
+    slider-min:        rgba($color, 0.87),
+    slider-off:        rgba($color, 0.26),
+    slider-off-active: rgba($color, 0.38),
+  );
+};
+$app-foreground-palette: getMatLightThemeForegroundPalette(black);
+
+// Final Light Theme
+$app-light-theme: map-merge($app-light-theme-base, (foreground: $app-foreground-palette));
+
+/*
+
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
+
+// Background palette for light themes.
+$mat-light-theme-background: (
+  status-bar: map_get($mat-grey, 300),
+  app-bar:    map_get($mat-grey, 100),
+  background: map_get($mat-grey, 50),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get($mat-grey, 300),
+  selected-disabled-button: map_get($mat-grey, 400),
+  disabled-button-toggle: map_get($mat-grey, 200),
+  unselected-chip: map_get($mat-grey, 300),
+  disabled-list-option: map_get($mat-grey, 200),
+);
+
+// Foreground palette for light themes.
+$mat-light-theme-foreground: (
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+*/
