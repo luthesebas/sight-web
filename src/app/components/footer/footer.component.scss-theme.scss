@@ -2,10 +2,29 @@
 
 @mixin app-footer-theme($theme) {
   $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
 
   .app-footer {
-    color: mat-color($theme, text);
-    color: white;
+    color: mat-color($primary, 100);
     background-color: mat-color($primary);
+
+    a {
+      color: mat-color($primary, 100);
+
+      &:hover {
+        color: white;
+      }
+    }
+
+    .link-container {
+      color: white;
+    }
+
+    .logo {
+      color: mat-color($primary, 200);
+    }
   }
 }
