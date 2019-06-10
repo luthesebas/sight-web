@@ -1,34 +1,30 @@
 <div class="app-footer">
-  <div class="social-media-collection">
-    <a>A</a>
-    <a>B</a>
+  <div class="social-medial-links">
+    <a
+      [routerLink]="'/'"
+      class="fab fa-instagram"
+    ></a>
+    <a
+      [routerLink]="'/'"
+      class="fab fa-snapchat"
+    ></a>
   </div>
-  <div class="navigation">
+
+  <div class="link-container">
     <div class="link-collection">
-      <strong>Label</strong>
-      <a>A</a>
-      <a>A</a>
-      <a>A</a>
-      <a>A</a>
-      <a>A</a>
+      <div class="heading">Rezepte</div>
+      <a [routerLink]="'/'">Entdecken</a>
+      <a [routerLink]="'/'">Kochbücher</a>
     </div>
     <div class="link-collection">
-      <strong>Label</strong>
-      <a>B</a>
-      <a>B</a>
-      <a>B</a>
-      <a>B</a>
-      <a>B</a>
-    </div>
-    <div class="link-collection">
-      <strong>Label</strong>
-      <a>C</a>
-      <a>C</a>
-      <a>C</a>
-      <a>C</a>
-      <a>C</a>
+      <div class="heading">Unternehmen</div>
+      <a [routerLink]="'/'">Über uns</a>
+      <a [routerLink]="'/'">Karriere</a>
+      <a [routerLink]="'/'">Impressum & Kontakt</a>
+      <a [routerLink]="'/'">Datenschutzerklärung</a>
     </div>
   </div>
+
   <div class="logo">
     <img [src]="'./assets/happybelly.svg'" />
     © 2019 happybelly GmbH
