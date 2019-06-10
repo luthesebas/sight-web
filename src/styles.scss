@@ -6,8 +6,8 @@
 @import "./app/components/footer/footer.component.scss-theme.scss";
 
 .light-theme {
-  @include angular-material-theme($light-theme);
-  @include app-footer-theme($light-theme);
+  @include angular-material-theme($app-light-theme);
+  @include app-footer-theme($app-light-theme);
 }
 
 html,
@@ -19,4 +19,5 @@ body {
   margin: 0;
   background-color: rgb(238, 238, 238);
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  line-height: 1.2;
 }
