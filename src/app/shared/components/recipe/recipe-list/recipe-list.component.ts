@@ -2,12 +2,11 @@ import {
   Component,
   ChangeDetectionStrategy,
   OnInit,
-  Input,
-  Output,
-  EventEmitter
+  Input
 } from '@angular/core';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-list',
@@ -17,17 +16,17 @@ import { Recipe } from 'src/app/shared/models/recipe/recipe';
 })
 export class RecipeListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   @Input()
   public recipes: Recipe[];
-  @Output()
-  public openDetails = new EventEmitter<number>();
 
   ngOnInit() { }
 
   public openDetailsOf(recipe: Recipe): void {
-    this.openDetails.emit(recipe.id);
+    this.router.navigate(['/recipe', recipe.id]);
   }
 
   public trackRecipe(index: number, recipe: Recipe): number {
