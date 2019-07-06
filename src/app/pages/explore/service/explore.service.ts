@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
-
-import { Recipe } from 'src/app/shared/models/recipe/recipe';
+import { HttpClient } from '@angular/common/http';
 
 import { of, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { Recipe } from 'src/app/shared/models/recipe/recipe';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExploreService {
 
-  constructor() { }
+  private readonly recipes$: Observable<Recipe[]>; // TODO: Replace with HttpCall
 
-  public getRecipes(): Observable<Recipe[]> {
+  constructor(
+    private http: HttpClient
+  ) {
     const recipe0 = new Recipe();
     recipe0.id = 0;
     recipe0.details.title = 'Gebratenes Fischfilet auf gegrilltem Zucchinigemüsebeet mit Bärlauchpesto und Tomaten';
@@ -38,7 +42,17 @@ export class ExploreService {
     recipe3.rating.averageScore = 4.8;
     recipe3.rating.totalRatings = 32;
 
-    return of([recipe0, recipe1, recipe2, recipe3]);
+    this.recipes$ = of([recipe0, recipe1, recipe2, recipe3]);
+  }
+
+  public getRecipes(): Observable<Recipe[]> {
+    return this.recipes$;
+  }
+
+  public getRecipe(id: string): Observable<Recipe> {
+    return this.recipes$.pipe(
+      map(recipes => recipes[0])
+    );
   }
 
 }
