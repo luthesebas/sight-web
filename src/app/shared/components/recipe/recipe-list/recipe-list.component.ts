@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter
+} from '@angular/core';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe';
 
@@ -14,8 +21,14 @@ export class RecipeListComponent implements OnInit {
 
   @Input()
   public recipes: Recipe[];
+  @Output()
+  public openDetails = new EventEmitter<number>();
 
   ngOnInit() { }
+
+  public openDetailsOf(recipe: Recipe): void {
+    this.openDetails.emit(recipe.id);
+  }
 
   public trackRecipe(index: number, recipe: Recipe): number {
     return recipe ? recipe.id : undefined;
