@@ -1,0 +1,304 @@
+<h1>Cheatsheet</h1>
+
+Author: Sebastian Luther \
+Latest revision: 19.10.2019
+
+## Inhaltsverzeichnis
+- [Inhaltsverzeichnis](#inhaltsverzeichnis)
+- [Allgemeines](#allgemeines)
+  - [User Stories: Fachliche Anforderungen](#user-stories-fachliche-anforderungen)
+- [TypeScript](#typescript)
+  - [Klasse VS Interface](#klasse-vs-interface)
+  - [Spread Operator](#spread-operator)
+  - [Destructuring](#destructuring)
+- [Angular](#angular)
+  - [Namenskonvention](#namenskonvention)
+  - [Template Syntax](#template-syntax)
+  - [Observables & Subscriptions](#observables--subscriptions)
+    - [Wissenswertes](#wissenswertes)
+    - [Memory Leaks](#memory-leaks)
+
+
+
+## Allgemeines
+
+- - - - - - - - - - - 
+### User Stories: Fachliche Anforderungen
+
+User Stories werden in der agilen Softwareentwicklung verwendet, um fachliche Anforderungen kurz und verständlich in natürlicher Sprache zu beschreiben. Hierfür kann beispielsweise folgendes Muster verwendet werden:
+
+```
+Als [Rolle] möchte ich [Ziel/Wunsch/Funktion] um [Nutzen]
+```
+
+Eine so spezifizierte Anforderung ist nur grob umrissen, weshalb es gilt diese in einem (persönlichen) Dialog aufzuarbeiten, zu verstehen und mit sogenannten Akzeptanzkriterien anzureichern. Akzeptanzkriterien beschreiben welche Erwartungen eine Story erfüllen muss, sodass diese als erfüllt angesehen werden kann.
+
+Ein Beispiel: 
+
+```
+Story: Rezepte vorschlagen
+
+Als Kochneuling möchte ich eine Liste an zufällig ausgewählten Rezepten vorgeschlagen bekommen, um mich bei der Frage "Was koche ich heute?" zu unterstützen.
+
+- Die Liste zeigt X Bücher
+- Die Rezepte wurden alle zufällig ausgewählt
+- Die Liste kann neu zusammengewürfelt werden
+- Es bedarf keiner initialen Sortierung
+- Filter- und Sortiermöglichkeiten
+```
+**Wichtig:** "Gute" User Stories zeichnen sich im eigentlichen Sinn dadurch aus, dass fachliche Anforderungen beschreiben werden und nicht Lösungswege oder technische Belange. Die obige Beispielstory ist nach dieser Definition somit nicht "gut". Letztendlich ist aber ist die Ausformulierung von Stories jedem selbst überlassen.
+
+
+
+## TypeScript
+
+[TypeScript](https://www.typescriptlang.org/) (TS) ist ein superset der Programmiersprache JavaScript (JS) und basiert auf (zukünftigen) ECMAScript-Standards. Dies bedeutet, dass TS als eine Schicht um JS herum verstanden werden kann, die zusätzliche Features mit sich bringt, wie beispielsweise die statische Typisierung aus der objektorientierten Programmierung.
+
+TS kann nicht im Browser ausgeführt werden, da es sich mit den zusätzlichen Features nicht mehr um reines JS handelt. Deshalb wird TS mit einem Compiler ausgeliefert, welchen TS-Code in JS-Code transpiliert. Beim Transpilieren werden alle verwendeten TS-Sprachkonstrukte so umgewandelt, sodass diese nachwievor die selbe Semantik besitzen, jedoch nur mit bordeigenen JS-Mittel.
+
+*Übrigens*: Da TS den existierenden Sprachstandard von TS erweitert, ist jedes JS-Programm ein korrektes TS-Programm, nicht aber umgekehrt!
+
+- - - - - - - - - - - -
+### Klasse VS Interface
+
+Bei einer Systemarchitektur mit einem Angular-Frontend und einem HTTP-Backend (wie zum Beispiel ein REST-Service) liegt die kritische Geschäftslogik im Backend. Da das Frontend in erster Linie Daten des Backends empfangen, darstellen, verarbeiten und zurücksenden soll, ist es letztendlich nicht notwendig im Frontend die überlichen Ansprüche an Models zu legen wie im Backend. Aus diesem und den daraus ergebenden Vorteilen sind **Interfaces** für Models vorzuziehen:
+
+- Für die Daten vom Server ist kein Mapping auf Klasseninstanzen nötig
+- Einfaches kopieren mit Hilfe des Spread-Operators ist möglich
+- Bei strikter Verwendung von Interfaces ist das Frontend [NgRx](https://ngrx.io/) ready
+
+
+
+- - - - - - - - - 
+### Spread Operator
+
+Details: [MDN web docs](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+
+> Mit der Spread-Syntax kann ein einzelner Ausdruck dort expandiert werden, wo mehrere Argumente (bei Funktionsaufrufen), mehrere Elemente (für Array-Literale) oder mehrere Variablen (für destrukturierende Anweisungen) erwartet werden.
+~ [MDN web docs](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator)
+
+**Problem:** Ein Objekt oder ein Array soll so kopiert werden, dass das Original unverändert bleibt, auch dann, wenn die Kopie manipuliert wird.
+
+**Naiver Ansatz:**
+```TS
+const recipe = { name: 'Steak' };
+const copy = recipe;
+copy.name = 'Pizza';
+
+console.log(copy); // { name: 'Pizza' }
+console.log(recipe); // { name: 'Pizza' }
+```
+
+Dieser Ansatz funktioniert nicht, da Variablen im Bezug auf Objekte immer nur eine Referenz auf ein Objekt und nicht das Objekt an sich speichern. Das heißt, dass die Variablen `recipe` und `copy` auf das selbe Objekt zeigen und nicht auf zwei unterschiedliche Objekte (Stichwort "Pass by Value" und "Pass by Reference").
+
+**Lösung mit dem Spread-Operator:**
+```TS
+1. const recipe = { name: 'Steak' };
+2. const copy = { 
+3.     ...recipe,
+4.     name: 'Pizza'
+5. };
+6. 
+7. console.log(copy);   // { name: 'Pizza' }
+8. console.log(recipe); // { name: 'Steak' }
+```
+
+In Zeile 2 - 5 wird zuerst ein neues leeres untypisiertes Objekt erzeugt. Mit Hilfe des Spread-Operators werden anschließend 1:1 alle Eigenschaften von `recipe` in das neue Objekt kopiert (Zeile 3). Bei diesem Vorgang ist es möglich Eigenschaftswerte zu überschreiben. In Zeile 4 wird so der Wert von `name` auf `'Pizza'` gesetzt.
+
+**Wichtig:** Als Grundlage für den Spread-Operator dient immer ein leeres untypisiertes Objekt in das die Eigenschaften hineinkopiert werden. Ist das zu klonende Objekt eine Klasseninstanz, so werden nur die Eigenschaften kopiert, nicht aber die Klassenmethoden! 
+
+Der Spread-Oberator kopiert nicht nur Eigenschaften mit einem primitiven Datentyp (wie ``boolean``, ``number`` oder ``string``), sondern auch jene Eigenschaften, die auf ein Objekt verweisen (Objekt in einem Objekt):
+
+```TS
+const twinA = { 
+    name: { first: 'Fred', last: 'Müller' }, 
+    age: 22,
+};
+const twinB = { ...person, name: { first: 'Maxi', last: 'Müller' } };
+console.log(twinA); // { name: { first: 'Fred', last: 'Müller' } age: 22 }
+console.log(twinB); // { name: { first: 'Maxi', last: 'Müller' } age: 22 }
+```
+
+*Übrigens*: Mit dem Spread-Operator können lass sich auch **Arrays kopieren**:
+
+```TS
+const numbers = [1, 2, 3, 4, 5];
+const a = [0, ...numbers];    // [0, 1, 2, 3, 4, 5]
+const b = [...numbers, 6];    // [1, 2, 3, 4, 5, 6]
+const c = [0, ...numbers, 6]; // [0, 1, 2, 3, 4, 5, 6]
+```
+
+
+
+- - - - - - - - 
+### Destructuring
+Details: [MDN web docs](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destrukturierende_Zuweisung)
+
+Mit Hilfe der destrukturierende Zuweisung ist es möglich, Daten aus Arrays oder Objekten zu extrahieren oder, anders ausgedrückt, komplexe Datenstrukturen in einfachere Teile runterzubrechen.
+
+Vorher:
+```TS
+const person { name: 'Fred Müller', age: 22 };
+
+const name = person.name; // 'Fred Müller'
+const age = person.age;   // 22
+```
+
+Nacher: 
+
+```TS
+1.  const person = { name: 'Fred Müller', age: 22 };
+2.
+3.  const { name, age = 18, height, weight = 72 } = person;
+4.  console.log(name);   // 'Fred Müller'
+5.  console.log(age);    // 22
+6.  console.log(height); // undefined
+7.  console.log(weight); // 72
+8. 
+9.  const numbers = [1920, 1080, 940, 720, 440];
+10. const [a, b, ...other] = numbers;
+11. console.log(a);    // 1920
+12. console.log(b):    // 1080
+13. console.log(other); // [940, 720, 440]
+```
+
+**Wichtig:** Wird versucht eine Variable zuzuweisen, zu der keine Eigenschaft im destrukturierenden Objekt vorhanden ist, so erhält diese den Wert `undefined` (Zeile 2 und 6). Um `undefined` zu vermeiden, können für diese Variablen Default-Werte definiert werden (Zeile 2 und 7).
+
+
+
+## Angular
+
+[Angular](https://angular.io/) ist ein Enterprise-Ready Webframework für die Entwicklung von TypeScript-basierten, modularen, skalierbaren und wartbaren Spingle-Page-Applikationen. Obwohl Angular den Hauptfokus auf den Browser als Zielplattform legt, kann Angular durch seine Plattformunabhängigkeit beispielsweise auch auf einem Server und nativ auf mobilen Endgeräten ausgeführt werden.
+
+- - - - - - - - - - - 
+### Namenskonvention
+
+Angular verfolgt eine strenge Namenskonvention:
+
+- **dashed-case**: Dateinamen, Ordner und Selektoren 
+  - ``recipe-list``
+  - ``recipe-dashboard``
+- **UpperCamelCase**: Klassen und Interfaces
+  - ``Recipe``
+  - ``RecipeDetail``
+- **lowerCamelCase**: Properties und Funktionen
+  - ``book``
+  - ``books$``
+  - ``navigateBack()``
+
+
+
+- - - - - - - - - -
+### Template Syntax
+
+| Name               | Syntax    | Beispiel                       | Beschreibung                                    |
+|--------------------|:---------:|--------------------------------|-------------------------------------------------|
+| Interpolation      | ``{{}}`` | ``{{ book.title }}``           | Daten in einem Template anzeigen                |
+| Property Binding   | ``[]``   | ``[title]="book.title"``       | Eigenschaften eines DOM-Elements setzen         |
+| Attributdirektiven | ``[]``   | ``[isAdmin]``                  | Zusätzliche Logik an ein DOM-Element hängen     |
+| Event Binding      | ``()``   | ``(click)="handleClick()"``    | Ereignisse verarbeiten                          |
+| Two-Way-Binding    | ``[()]`` | ``[(desc)]="book.desc"``       | Eigenschaften setzen und Ereignisse verarbeiten |
+| Strukturdirektiven | ``*``    | ``*ngIf, *ngFor, ...``         | Direktiven die den DOM-Baum verändern           |
+| Pipe               | `|`      | `{{ book.title | uppercase }}` | Transformation von Daten                        |
+
+**Wichtig:**
+Bei der Verwendung von eckigen Klammern, interpretiert Angular das Argument als Ausdruck und nicht als String/Zeichenkette!
+
+```HTML
+<book [title]="foo">   <!-- Property 'foo' der Komponente-->
+
+<book title="foo">     <!-- Der String 'foo' -->
+
+<book [title]="'foo'"> <!-- Der String 'foo' -->
+```
+
+
+
+- - - - - - - - - -- - - - - - 
+### Observables & Subscriptions
+
+Ein Observable ist ein **Datenstrom** für (noch nicht bekannte) Ergebnisse. Ein einfaches Beispiel mit nur einem Ergebnis, stellt die HTTP-Schnittstelle dar. Sendet der Client eine HTTP-Anfrage, so ist das Ergebnis dieser Anfrage erst nach der Antwort des Servers bekannt. Der Aufrufer erhält von der Schnittstelle einen Datenstrom und kann auf dessen Ergebnisse lauschen ("subscribe") und unterdessen beispielsweise eine Ladeanimation anzeigen.
+
+Mehr unter: [RxJS](https://rxjs-dev.firebaseapp.com/)
+
+Um Daten aus einem ``Observable`` zu erhalten, muss der Datenstrom mit ``subscribe()`` abonniert werden. Als Argument wird ein Objekt mit den drei Callback-Funktionen ``next``, ``error`` und ``complete`` erwartet:
+
+```TS
+const observer = {
+    next: value => console.log('Next:', value),
+    error: error => console.error('Error:', error),
+    complete: () => console.log('Complete'),
+} // Must implement the Subscriber interface
+
+const subscription = aObservable$.subscribe(observer);
+//...
+subscription.unsubscribe(); // Deabonnieren!
+```
+
+**Wichtig:** Wer abonniert muss auch deabonnieren! - siehe obiges Codebeispiel
+
+
+
+- - - - - - - - -
+#### Wissenswertes
+
+- Observables aus HttpClient und ActivatedRoute von Angular feuern nur einmalig und sind dann zu Ende. Entsprechend werden Subscriber auf diese Observables automatisch abgemeldet (Details: [Subscriptions und Memory Leaks](#problem:-Subscriptions-und-Memory-Leaks)).
+
+
+
+- - - - - - - - -
+#### Memory Leaks
+
+Nicht beendete Subscriptions erzeugen einen Memory Leak. Dies bedeutet unter anderem, dass selbst nachdem eine Komponente zerstört wurde (z.B. bei dem Navigieren auf eine andere Seite), die Daten eines Datenstroms weiterhin fließen.
+
+```TS
+ngOnInit() {
+    interval(1000).subscribe(e => console.log(e));
+    this.router.navigate('/');
+}
+```
+
+**Lösung A: Subject und ``takeUntil()``**
+
+Diese Lösung beruht auf der Tatsache, dass wenn der Datenstrom eines Observables zu Ende ist, auch 
+alle Subscriber deabonniert werden. Dies passiert sowohl bei ``complete`` als auch ``error``. 
+Um also Subscriptions nicht manuell deabonnieren zu müssen, reicht es aus den Datenstrom zu beenden.
+Um dies zu erreichen kann der Operator ``takeUntil()`` verwendet werden. Dieser nimmt ein Signal
+aus einem anderen Observable (hier ``destroy$``) entgegen und beendet den Datenstrom, sobald er
+ein Signal erhält.
+
+```TS
+private destroy$ = new Subject();
+
+ngOnInit() {
+    aObservable$.pipe(
+        takeUntil(this.destroy$)
+    ).subscribe(e => console.log(e));
+}
+
+ngOnDestroy() {
+    this.destroy$.next();
+}
+```
+
+**Lösung B: Async-Pipe**
+
+Die zu **präferierende** und gleichtzeitig komfortablere Alternative zu einem Subject ist die Verwendung der Async-Pipe des Angular-Frameworks. Diese kümmert sich vollständig um die Verwaltung eines Observables (abonnieren und deabonnieren):
+
+```TS
+public recipes$: Observable<Recipe[]>;
+
+ngOnInit() {
+    recipes$ = this.recipeService.getAll(); 
+    // getAll() returns a Observable of a Recipe Array
+}
+```
+```HTML
+<div *ngFor="let recipe of recipes$ | async"> <!-- Async-Pipe -->
+  <h3>{{ recipe.title }}</h3>
+  <h5>{{ recipe.description }}</h5>
+</div>
+```
+
+
+
