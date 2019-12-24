@@ -1,7 +1,7 @@
 <h1>Cheatsheet</h1>
 
 Author: Sebastian Luther \
-Latest revision: 19.10.2019
+Latest revision: 24.12.2019
 
 <h2>Inhaltsverzeichnis</h2>
 
@@ -12,12 +12,15 @@ Latest revision: 19.10.2019
   - [Spread Operator](#spread-operator)
   - [Destructuring](#destructuring)
 - [Angular](#angular)
+  - [Tipps &amp; Tricks](#tipps-amp-tricks)
+    - [Zuästzliche CSS-Basispfade](#zuästzliche-css-basispfade)
+    - [CSS-Präprozessor für Schematics festlegen](#css-präprozessor-für-schematics-festlegen)
   - [Namenskonvention](#namenskonvention)
   - [Template Syntax](#template-syntax)
   - [Container and Presentational Components](#container-and-presentational-components)
     - [Presentational Components](#presentational-components)
     - [Container Components](#container-components)
-  - [Observables & Subscriptions](#observables--subscriptions)
+  - [Observables &amp; Subscriptions](#observables-amp-subscriptions)
     - [Operatoren](#operatoren)
     - [Memory Leaks](#memory-leaks)
   - [Wissenswertes](#wissenswertes)
@@ -172,8 +175,49 @@ const age = person.age;   // 22
 
 ## Angular
 
-[Angular](https://angular.io/) ist ein Enterprise-Ready Webframework für die Entwicklung von TypeScript-basierten, modularen, skalierbaren und wartbaren Single-Page-Applikationen. Obwohl Angular den Hauptfokus auf den Browser als Zielplattform legt, kann Angular durch seine Plattformunabhängigkeit beispielsweise auch auf einem Server und nativ auf mobilen Endgeräten ausgeführt werden.
+[Angular](https://angular.io/) ist ein Enterprise-Ready Webframework für die Entwicklung von TypeScript-basierten, modularen, skalierbaren und wartbaren Single-Page-Applikationen. Obwohl Angular den Hauptfokus auf den Browser als Zielplattform legt, kann Angular aber auch beispielsweise auf einem Server und nativ auf mobilen Endgeräten ausgeführt werden.
 
+
+--------------------
+### Tipps & Tricks
+
+#### Zuästzliche CSS-Basispfade
+
+Bei dem Verwenden von CSS-Präprozessoren wie SCSS kann die includePath-Option für gloable Styles und Komponenten genutzt werden. Mit dieser lassen sich zusätzliche Basispfade definieren, die bei Imports mit überprüft werden und erleichert so die Arbeit mit (S)CSS.
+
+Um beispielsweise den Pfad `src/styles` mit aufnehmen zu lassen, ist in der Datei `angular.json` sowohl unter `projects.[project].architect.build` als auch `projects.[project].architect.test` Folgendes zu ergänzen:
+
+```JSON
+"stylePreprocessorOptions": {
+  "includePaths": [
+    "src/styles"
+  ]
+}
+```
+
+(S)CSS-Dateien, die in den unter `includePath` angegebenen Pfade abgelegt sind, können von überall aus importiert werden, ohne die Angabe eines relativen Pfades. Ein Beispiel anhand der Datei `src/styles/_variables.scss`:
+
+```SCSS
+// For example in: src/app/home.component.scss
+
+@import '../styles/variables'; // A relative path works still
+@import 'variables'; // But now this works as well
+```
+
+#### CSS-Präprozessor für Schematics festlegen
+
+Es kann vorkommen, dass Schematics CSS-Dateien generieren, obwohl für das Angular Projekt ein CSS-Präprozessor wie SCSS definiert wurde. Der CSS-Präprozessor für Schematics kann in der Datei  `angular.json` unter `projects.[project].schematics` festgelegt werden: 
+ 
+```JSON
+"schematics": {
+  "@schematics/angular:component": {
+    "style": "scss"
+  },
+  "@ngrx/schematics:component": {
+    "style": "scss"
+  }
+},
+```
 
 
 --------------------
