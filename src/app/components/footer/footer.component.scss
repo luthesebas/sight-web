@@ -13,7 +13,8 @@
       width: 32px;
       text-align: center;
       text-decoration: none;
-      margin: 8px;
+      margin: 8px 8px;
+      padding: 4px 8px;
       border-radius: 50%;
     }
   }
@@ -25,9 +26,18 @@
     flex-wrap: wrap;
     justify-content: center;
 
+    @media screen and (max-width: 599px) {
+      flex-direction: column;
+      text-align: center;
+    }
+
     .link-collection {
       //flex-grow: 1;
       margin: 0 16px;
+
+      @media screen and (max-width: 599px) {
+        margin: 16px 0;
+      }
 
       .heading {
         font-weight: bold;
@@ -37,20 +47,14 @@
 
     a {
       display: block;
-      margin: 8px 0;
+      padding: 8px 0;
 
-      &:link {
-        text-decoration: none;
-      }
-
+      &:link,
       &:visited {
         text-decoration: none;
       }
 
-      &:hover {
-        text-decoration: underline;
-      }
-
+      &:hover,
       &:active {
         text-decoration: underline;
       }

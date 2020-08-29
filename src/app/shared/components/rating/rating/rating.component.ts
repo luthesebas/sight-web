@@ -16,6 +16,7 @@ export class RatingComponent implements OnInit {
 
   ngOnInit() { }
 
+  // TODO: Extract into RatingStarIconPipe
   public getIconName(index: number): string {
     if (this.rating.averageScore >= index) {
       return 'star';
