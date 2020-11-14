@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { RouteParameterService } from 'src/app/shared/services/route-parameter.service';
+import { RouteParameters } from 'src/app/shared/services/route-parameter.service';
 import { RecipePageParameters } from '../recipe-page-routing.config';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
@@ -15,7 +15,7 @@ export class RecipePageViewComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private routeParameterService: RouteParameterService,
+    private routeParameterService: RouteParameters,
   ) { }
 
   ngOnInit(): void { }
