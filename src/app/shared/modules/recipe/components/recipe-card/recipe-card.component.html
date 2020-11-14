@@ -1,0 +1,25 @@
+<mat-card class="recipe-card">
+  <mat-card-header class="recipe-card-header">
+    <mat-card-title>
+      {{ recipe.details.title | truncate: 150 : true }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      <div class="recipe-subtitle-content">
+        <span>{{ '{Username}' }}</span>
+        <app-rating [rating]="recipe.rating"></app-rating>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <img
+    *ngIf="recipe.coverImage"
+    mat-card-image
+    class="recipe-cover-image"
+    [src]="recipe.coverImage.source"
+    [alt]="recipe.coverImage.alternateText"
+  />
+
+  <mat-card-content>
+    <p>{{ recipe.details.description | truncate: 150 : true }}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,58 +1,56 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-
-import { MatButtonModule } from '@angular/material/button';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { reducers, metaReducers } from './reducers';
+
 import { AppEffects } from './app.effects';
+import { reducers, metaReducers } from './reducers';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './shared/modules/material/material.module';
 
-import { ExploreModule } from './pages/explore/explore.module';
+import { LogoComponent } from './components/logo/logo.component'
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 import { environment } from '../environments/environment';
 
+import { NAVIGATION_CONFIG, NAVIGATION_CONFIG_VALUE } from './config/navigation.config'
+import { SOCIAL_MEDIA_CONFIG, SOCIAL_MEDIA_VALUE } from './config/social-media.config';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    HeaderComponent,
+    LogoComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
 
+    MaterialModule,
+
     // App Modules
-    ExploreModule,
-
-    AppRoutingModule,
-
-    // Angular Material
-    MatButtonModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatMenuModule,
+    AppRoutingModule, // Must be placed after App Modules
 
     // NgRx
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot([AppEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [],
+  providers: [
+    { provide: NAVIGATION_CONFIG, useValue: NAVIGATION_CONFIG_VALUE },
+    { provide: SOCIAL_MEDIA_CONFIG, useValue: SOCIAL_MEDIA_VALUE }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

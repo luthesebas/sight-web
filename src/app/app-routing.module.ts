@@ -1,12 +1,22 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
+    // TODO: Show landing page (!= explore)
     path: '',
-    redirectTo: '/explore',
+    component: PageNotFoundComponent,
     pathMatch: 'full'
+  },
+  {
+    path: 'explore',
+    loadChildren: () => import('./pages/explore-page/explore-page.module').then(m => m.ExplorePageModule)
+  },
+  {
+    path: 'recipe',
+    loadChildren: () => import('./pages/recipe-page/recipe-page.module').then(m => m.RecipePageModule)
   },
   {
     path: '**',
@@ -15,7 +25,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    anchorScrolling: 'enabled',
+    scrollPositionRestoration: 'enabled'
+  })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

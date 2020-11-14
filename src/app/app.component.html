@@ -1,5 +1,52 @@
-<app-header></app-header>
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
-<app-footer></app-footer>
+<mat-sidenav-container class="side-navigation-container">
+
+  <!-- Side Navigation -->
+  <mat-sidenav
+    #sideNavigation
+    class="side-navigation"
+    fixedInViewport="true"
+    fixedToGap="64"
+    mode="over"
+    role="dialog"
+  >
+    <mat-toolbar color="primary">
+      <app-logo></app-logo>
+    </mat-toolbar>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let link of navigationConfig.sideNavigation">
+        <mat-icon *ngIf="link.iconName" matListIcon>{{ link.iconName }}</mat-icon>
+        <a
+          matLine
+          routerLinkActive="active"
+          [routerLink]="link.reference"
+          (click)="sideNavigation.close()"
+        >
+          {{ link.label }}
+        </a>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <!-- App Content -->
+  <mat-sidenav-content>
+
+    <!-- Header -->
+    <app-header
+      [showMainNavigation]="isHandset$ | async"
+      [navigationConfig]="navigationConfig"
+      (toggleSideNavigation)="sideNavigation.toggle()"
+    ></app-header>
+
+    <!-- Content -->
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+
+    <!-- Footer -->
+    <app-footer
+      [linkGroups]="navigationConfig.allLinkGroups"
+      [socialMediaLinks]="socialMediaConfig.allLinks"
+    ></app-footer>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>

@@ -1,14 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { NavigationConfig } from 'src/app/shared/models/common/navigation-config.model';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
-  constructor() { }
+  @Input()
+  showMainNavigation: boolean;
 
-  ngOnInit() { }
+  @Input()
+  navigationConfig: NavigationConfig;
+
+  @Output()
+  toggleSideNavigation = new EventEmitter();
 
 }

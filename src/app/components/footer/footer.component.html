@@ -1,32 +1,26 @@
-<footer class="app-footer">
+<footer class="footer">
   <div class="social-media-links">
-    <a
-      [routerLink]="'/'"
-      class="fab fa-instagram"
-    ></a>
-    <a
-      [routerLink]="'/'"
-      class="fab fa-snapchat"
-    ></a>
+    <h3>Folge uns</h3>
+    <ng-container *ngFor="let mediaLink of socialMediaLinks">
+      <a [routerLink]="mediaLink.reference" [title]="mediaLink.label">
+        <i [class]="['fab', 'fa-' + mediaLink.iconName]"></i>
+      </a>
+    </ng-container>
   </div>
 
-  <div class="link-container">
-    <div class="link-collection">
-      <div class="heading">Rezepte</div>
-      <a [routerLink]="'/'">Entdecken</a>
-      <a [routerLink]="'/'">Kochbücher</a>
-    </div>
-    <div class="link-collection">
-      <div class="heading">Unternehmen</div>
-      <a [routerLink]="'/'">Über uns</a>
-      <a [routerLink]="'/'">Karriere</a>
-      <a [routerLink]="'/'">Impressum & Kontakt</a>
-      <a [routerLink]="'/'">Datenschutzerklärung</a>
+  <div class="link-group-container">
+    <div *ngFor="let linkGroup of linkGroups" class="link-group">
+      <h3 class="link-group-heading">{{ linkGroup.label }}</h3>
+      <ul>
+        <li *ngFor="let link of linkGroup.links">
+          <a [routerLink]="link.reference" [title]="link.label">{{ link.label }}</a>
+        </li>
+      </ul>
     </div>
   </div>
 
-  <div class="logo">
-    <img [src]="'./assets/happybelly.svg'" />
-    © 2019 happybelly GmbH
+  <div class="legal">
+    <app-logo></app-logo>
+    <span>© {{ currentYear }} happybelly GmbH</span>
   </div>
 </footer>

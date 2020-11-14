@@ -11,9 +11,15 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  .app-footer {
+  .footer {
     color: mat-color($primary, 100);
     background-color: mat-color($primary);
+
+    h2,
+    h3,
+    h4 {
+      color: white;
+    }
 
     a {
       color: mat-color($primary, 100);
@@ -22,13 +28,9 @@
         color: white;
       }
     }
+  }
 
-    .link-container {
-      color: white;
-    }
-
-    .logo {
-      color: mat-color($primary, 200);
-    }
+  .link-group-container {
+    color: white;
   }
 }

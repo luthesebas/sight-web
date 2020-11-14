@@ -12,7 +12,7 @@ Latest revision: 24.12.2019
   - [Spread Operator](#spread-operator)
   - [Destructuring](#destructuring)
 - [Angular](#angular)
-  - [Tipps &amp; Tricks](#tipps-amp-tricks)
+  - [Tipps & Tricks](#tipps--tricks)
     - [Zuästzliche CSS-Basispfade](#zuästzliche-css-basispfade)
     - [CSS-Präprozessor für Schematics festlegen](#css-präprozessor-für-schematics-festlegen)
   - [Namenskonvention](#namenskonvention)
@@ -20,7 +20,7 @@ Latest revision: 24.12.2019
   - [Container and Presentational Components](#container-and-presentational-components)
     - [Presentational Components](#presentational-components)
     - [Container Components](#container-components)
-  - [Observables &amp; Subscriptions](#observables-amp-subscriptions)
+  - [Observables & Subscriptions](#observables--subscriptions)
     - [Operatoren](#operatoren)
     - [Memory Leaks](#memory-leaks)
   - [Wissenswertes](#wissenswertes)
@@ -113,17 +113,23 @@ In Zeile 2 - 5 wird zuerst ein neues leeres untypisiertes Objekt erzeugt. Mit Hi
 
 **Wichtig:** Als Grundlage für den Spread-Operator dient immer ein leeres untypisiertes Objekt in das die Eigenschaften hineinkopiert werden. Ist das zu klonende Objekt eine Klasseninstanz, so werden nur die Eigenschaften kopiert, nicht aber die Klassenmethoden! 
 
-Der Spread-Operator kopiert nicht nur Eigenschaften mit einem primitiven Datentyp (wie ``boolean``, ``number`` oder ``string``), sondern auch jene Eigenschaften, die auf ein Objekt verweisen (Objekt in einem Objekt):
+Der Spread-Operator kopiert alle Eigenschaften - seien es primitive Datentypen (wie ``boolean``, ``number`` oder ``string``) oder Objektreferenzen (nur die Referenz, nicht das Objekt selbst!):
 
 ```TS
-const twinA = { 
+const person = { 
     name: { first: 'Fred', last: 'Müller' }, 
     age: 22,
 };
-const twinB = { ...person, name: { first: 'Maxi', last: 'Müller' } };
-console.log(twinA); // { name: { first: 'Fred', last: 'Müller' } age: 22 }
-console.log(twinB); // { name: { first: 'Maxi', last: 'Müller' } age: 22 }
+const twin = { ...person, name: { first: 'Maxi', last: 'Müller' } };
+console.log(person); // { name: { first: 'Fred', last: 'Müller' } age: 22 }
+console.log(twin); // { name: { first: 'Maxi', last: 'Müller' } age: 22 }
+console.log(person.name === twin.name) // false
+
+const copy = { ...person, age: 50 };
+console.log(person.name === copy.name) // true
 ```
+
+Daraus folgt, dass mit einem einfachen Aufruf des Spread-Operator, das vollständige Klonen von Objekten mit deren Unterobjekte nicht möglich ist. Dies liegt daran, dass bei Referenzen die Referenzen und nicht die Objekte selbst kopiert werden! Wenn ein Objekt jedoch nur aus primitiven Eigenschaften aufgebaut ist, so ist ein vollständigen Klonen des Objektes möglich.
 
 Mit dem Spread-Operator lassen sich auch **Arrays kopieren**:
 
@@ -287,7 +293,7 @@ Die Grundidee des Konzeptes ist es die **Zuständigkeiten** unter den Komponente
 
 ![Container and Presentational Components](container-presentational-components.svg)
 
-Diese Unterteilung der Zuständigkeiten führt in der gesamten Anwendung zu weniger Komponenten mit Abhängigkeiten und zu mehr "dummen" Komponenten die einfach zu teste, warten und auszutauschen sind (deshalb ist dieses Design Pattern auch unter dem Namen "Smart and Dumb Components" bekannt).
+Diese Unterteilung der Zuständigkeiten führt in der gesamten Anwendung zu weniger Komponenten mit Abhängigkeiten und zu mehr "dummen" Komponenten die einfach zu testen, warten und auszutauschen sind. deshalb ist dieses Design Pattern auch unter dem Namen "Smart and Dumb Components" zu finden.
 
 #### Presentational Components 
 

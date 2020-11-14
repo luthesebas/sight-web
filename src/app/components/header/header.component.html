@@ -1,31 +1,41 @@
-<header>
+<header class="sticky-header">
   <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <div class="logo-menu">
-        <img [src]="'./assets/happybelly.svg'" />
-      </div>
+    <button
+      *ngIf="showMainNavigation"
+      mat-icon-button
+      class="side-navigation-toggle"
+      (click)="toggleSideNavigation.emit()"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <app-logo class="branding"></app-logo>
 
-      <a mat-button [routerLink]="'/'">
-        <mat-icon>explore</mat-icon>
-        Entdecken
+    <!-- Navigation -->
+    <nav *ngIf="!showMainNavigation" class="navigation">
+      <a mat-button [routerLink]="navigationConfig.mainNavigation.explore.reference">
+        <mat-icon>{{ navigationConfig.mainNavigation.explore.iconName }}</mat-icon>
+        {{ navigationConfig.mainNavigation.explore.label }}
       </a>
+
       <button mat-button [matMenuTriggerFor]="cookbookMenu">
-        <mat-icon>book</mat-icon>
-        Kochbuch
+        <mat-icon>{{ navigationConfig.mainNavigation.cookBook.iconName }}</mat-icon>
+        {{ navigationConfig.mainNavigation.cookBook.label }}
       </button>
       <mat-menu #cookbookMenu="matMenu">
-        <a mat-button [routerLink]="'/'">
-          <mat-icon>bookmarks</mat-icon>
-          Meine Rezeptsammlungen
-        </a>
+        <ng-container *ngFor="let menu of navigationConfig.mainNavigation.cookBook.subMenus">
+          <a mat-menu-item [routerLink]="menu.reference">
+            <mat-icon>{{ menu.iconName }}</mat-icon>
+            {{ menu.label }}
+          </a>
+        </ng-container>
       </mat-menu>
+    </nav>
 
-      <span class="menu-spacer"></span>
-
+    <!-- Login, Register, Menu -->
+    <div class="menu">
       <a mat-button [routerLink]="'/'">
-        <mat-icon>person_add</mat-icon>
-        Einloggen
+        <mat-icon>login</mat-icon> Anmelden
       </a>
-    </mat-toolbar-row>
+    </div>
   </mat-toolbar>
 </header>

@@ -1,14 +1,24 @@
-.logo-menu {
-  display: flex;
-  align-items: center;
-  margin-right: 32px;
-}
-.logo-menu img {
-  height: 32px;
-  width: auto;
-  margin: 8px;
+.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.menu-spacer {
-  flex: 1 1 auto;
+.side-navigation-toggle {
+  margin-right: 16px;
+}
+
+.navigation {
+  flex: 10 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.menu,
+.branding {
+  flex: 1 1 (100% - 70%) / 2;
+}
+
+.menu {
+  text-align: right;
 }

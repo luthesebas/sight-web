@@ -1,78 +1,82 @@
-.app-footer {
-  margin-top: 64px;
+:host {
+  display: block;
+}
+
+.footer {
+  margin-top: 4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
 
-  .social-media-links {
-    margin: 16px 0 0 0;
-    text-align: center;
+.social-media-links {
+  margin: 2rem 0;
+  text-align: center;
 
-    .fab {
-      font-size: 32px;
-      width: 32px;
-      text-align: center;
-      text-decoration: none;
-      margin: 8px 8px;
-      padding: 4px 8px;
-      border-radius: 50%;
-    }
+  a {
+    padding: 8px;
+    margin: 0.5rem;
   }
 
-  .link-container {
-    margin: 16px 0 0 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+  .fab {
+    font-size: 32px;
+    width: 32px;
+  }
+}
 
-    @media screen and (max-width: 599px) {
-      flex-direction: column;
-      text-align: center;
-    }
+.link-group-container {
+  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 
-    .link-collection {
-      //flex-grow: 1;
-      margin: 0 16px;
+  @media screen and (max-width: 599px) {
+    flex-direction: column;
+  }
+}
 
-      @media screen and (max-width: 599px) {
-        margin: 16px 0;
-      }
+.link-group {
+  width: fit-content;
+  margin: 0 2rem;
 
-      .heading {
-        font-weight: bold;
-        margin-bottom: 16px;
-      }
-    }
+  @media screen and (max-width: 599px) {
+    width: 100%;
+    margin: 1rem 0;
+    text-align: center;
+  }
 
-    a {
-      display: block;
+  ul {
+    list-style-type: none;
+    padding: 0;
+
+    li {
       padding: 8px 0;
-
-      &:link,
-      &:visited {
-        text-decoration: none;
-      }
-
-      &:hover,
-      &:active {
-        text-decoration: underline;
-      }
     }
   }
 
-  .logo {
-    text-align: center;
-    margin: 32px 0 16px 0;
+  a {
+    &:link,
+    &:visited {
+      text-decoration: none;
+    }
 
-    img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 8px;
-      width: auto;
-      max-height: 32px;
-      min-height: 16px;
+    &:hover,
+    &:active {
+      text-decoration: underline;
     }
   }
+}
+
+.link-group-heading {
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 32px 0 16px 0;
 }

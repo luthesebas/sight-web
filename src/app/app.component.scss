@@ -1,9 +1,21 @@
-.content {
-  margin: 0 auto;
-  width: fit-content;
-  max-width: 70%;
+.side-navigation-container {
+  height: 100%;
 
-  @media screen and (max-width: 599px) {
-    max-width: 90%;
+  .side-navigation {
+    min-width: 200px;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.content {
+  width: calc(100% - 2rem);
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+
+  @media screen and (min-width: 599px) {
+    max-width: 80%;
+    margin: 2rem auto;
   }
 }
