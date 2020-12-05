@@ -1,14 +1,26 @@
 @import "~@angular/material/theming";
+
+// Only ever include this mixin once!
 @include mat-core();
 
+// Custom Angular Material Themes
 @import "themes/light-theme.scss";
+@import "themes/dark-theme.scss";
 
-@import "./app/components/footer/footer.component.scss-theme.scss";
+//Custom Component Themes
+@import "./custom-component-themes.scss";
 
 .light-theme {
   @include angular-material-theme($app-light-theme);
-  @include app-footer-theme($app-light-theme);
+  @include custom-components-theme($app-light-theme);
 }
+
+.dark-theme {
+  @include angular-material-theme($app-dark-theme);
+  @include custom-components-theme($app-dark-theme);
+}
+
+// Global Styles
 
 html,
 body {

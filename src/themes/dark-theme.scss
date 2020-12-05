@@ -1,0 +1,42 @@
+// TODO
+
+// mat-palette: $palette-name, main, light, dark
+$dark-theme-primary: mat-palette($mat-green, 600, 300, 900) !default;
+$dark-theme-accent: mat-palette($mat-green, 600, 300, 900) !default;
+$dark-theme-warn: mat-palette($mat-red, 600) !default;
+
+$app-dark-theme-base: mat-dark-theme(
+  $dark-theme-primary,
+  $dark-theme-accent,
+  $dark-theme-warn
+);
+
+// Foreground palette for dark themes.
+@function getMatDarkThemeForegroundPalette($color) {
+  @return (
+    base: $color,
+    divider: rgba($color, 0.12),
+    dividers: rgba($color, 0.12),
+    disabled: rgba($color, 0.38),
+    disabled-button: rgba($color, 0.26),
+    disabled-text: rgba($color, 0.38),
+    elevation: $color,
+    hint-text: rgba($color, 0.38),
+    secondary-text: rgba($color, 0.54),
+    icon: rgba($color, 0.54),
+    icons: rgba($color, 0.54),
+    text: rgba($color, 0.87),
+    slider-min: rgba($color, 0.87),
+    slider-off: rgba($color, 0.26),
+    slider-off-active: rgba($color, 0.38)
+  );
+}
+$app-foreground-palette: getMatDarkThemeForegroundPalette(white);
+
+// Final Dark Theme
+$app-dark-theme: map-merge(
+  $app-dark-theme-base,
+  (
+    foreground: $app-foreground-palette,
+  )
+);
