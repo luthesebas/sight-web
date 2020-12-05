@@ -1,27 +1,45 @@
 import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
 
+export class RepeatContext {
+  constructor(readonly $implicit: number) {}
+}
+
 @Directive({
-  selector: '[appRepeat]'
+  selector: '[appRepeat][appRepeatOf]'
 })
 export class RepeatDirective {
 
+  private readonly MAX_TIMES = 2 ** 16;
+
   constructor(
-    private template: TemplateRef<any>,
-    private container: ViewContainerRef
+    private readonly template: TemplateRef<RepeatContext>,
+    private readonly container: ViewContainerRef
   ) { }
 
   @Input()
-  set appRepeat(times: number) {
-    this.container.clear();
+  set appRepeatOf(times: number) {
+    const safeTimes = Math.max(0, Math.min(times, this.MAX_TIMES));
+    const alreadyRepeated = this.container.length;
 
-    for (let i = 0; i < times; i++) {
-      this.container.createEmbeddedView(
+    if (safeTimes < alreadyRepeated) {
+      this.removeViews(alreadyRepeated - safeTimes);
+    } else {
+      this.addViews(alreadyRepeated, safeTimes);
+    }
+  }
+
+  private addViews(currentLength: number, targetLength: number) {
+    for (let i = currentLength; i < targetLength; i++) {
+      this.container.createEmbeddedView<RepeatContext>(
         this.template,
-        {
-          $implicit: times,
-          index: i // Make index in template available, by adding it to the context
-        }
+        new RepeatContext(i)
       );
+    }
+  }
+
+  private removeViews(amount: number) {
+    for (let i = 0; i < amount; i++) {
+      this.container.remove(); // Remove last view in container
     }
   }
 

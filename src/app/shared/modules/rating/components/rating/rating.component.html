@@ -1,5 +1,5 @@
 <div class="rating-container">
-  <mat-icon *appRepeat="5; let i = index">
+  <mat-icon *appRepeat="let i of 5">
     {{ i + 1 | ratingStarIcon: rating }}
   </mat-icon>
   <span>{{ rating.averageScore }} ({{ rating.totalRatings | abbreviate }})</span>
