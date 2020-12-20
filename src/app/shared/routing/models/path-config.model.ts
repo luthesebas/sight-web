@@ -2,6 +2,6 @@ import { PathParameter } from './path-parameter.model';
 
 export interface PathConfig {
   path: string;
-  variables?: PathParameter[];
-  queries?: PathParameter[];
+  variables?: PathParameter<any>[];
+  queries?: PathParameter<any>[];
 }

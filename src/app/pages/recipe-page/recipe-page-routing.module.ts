@@ -11,8 +11,8 @@ const routes: Routes = [
   },
   {
     path: RECIPE_PAGE_PATHS.one.path,
+    data: { pathConfig: RECIPE_PAGE_PATHS.one },
     component: RecipePageViewComponent,
-    data: { pathConfig: RECIPE_PAGE_PATHS.one }
   }
 ];
 

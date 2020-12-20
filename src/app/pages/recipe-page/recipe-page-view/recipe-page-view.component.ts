@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
-import { RouteParameters } from 'src/app/shared/services/route-parameter.service';
+import { RouteParameters } from 'src/app/shared/routing/services/route-parameter.service';
 import { RecipePageParameters } from '../recipe-page-routing.config';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-page-view',
@@ -13,11 +13,16 @@ import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
 })
 export class RecipePageViewComponent implements OnInit {
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private routeParameterService: RouteParameters,
-  ) { }
+  private routeParameters$: Observable<RecipePageParameters>;
 
-  ngOnInit(): void { }
+  constructor(
+    private routeParameters: RouteParameters
+  ) {
+    this.routeParameters$ = routeParameters.get<RecipePageParameters>();
+  }
+
+  ngOnInit(): void {
+    this.routeParameters$.subscribe(x => console.log(x.variables.recipeId));
+  }
 
 }

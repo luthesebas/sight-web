@@ -1,19 +1,16 @@
-import { PathConfig } from 'src/app/shared/models/common/path-config.model';
-import { PathParameter } from 'src/app/shared/models/common/path-parameter.model';
-import { PathParameters } from 'src/app/shared/models/common/path-parameters.model';
+import { PathConfig } from 'src/app/shared/routing/models/path-config.model';
+import { NumberPathParameter } from 'src/app/shared/routing/models/path-parameter.model';
+import { PathParameterMap } from 'src/app/shared/routing/models/path-parameter-map.model';
 
 const pathVariables = {
-  recipeId: <PathParameter>{
-    name: 'recipeId',
-    type: 'number'
-  }
+  recipeId: new NumberPathParameter('recipeId')
 }
 
 const pathQueries = {
 
 }
 
-export type RecipePageParameters = PathParameters<
+export type RecipePageParameters = PathParameterMap<
   typeof pathVariables,
   typeof pathQueries
 >;
