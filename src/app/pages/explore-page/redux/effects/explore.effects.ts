@@ -11,7 +11,7 @@ import {
   LoadRandomRecipesFailure
 } from '../actions/explore.actions';
 
-import { RecipeService } from 'src/app/shared/services/recipe.service';
+import { RecipeService } from 'src/app/shared/modules/recipe/services/recipe.service';
 
 @Injectable()
 export class ExploreEffects {

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { Recipe } from '../models/recipe/recipe.model';
+import { Recipe } from '../../../models/recipe/recipe.model';
 
 @Injectable({
   providedIn: 'root'
