@@ -4,21 +4,26 @@
   z-index: 10;
 }
 
-.side-navigation-toggle {
-  margin-right: 16px;
+.side-navigation-trigger {
+  margin-right: 1rem;
 }
 
-.navigation {
-  flex: 10 0 auto;
+.container {
   display: flex;
-  justify-content: center;
-}
+  align-items: center;
 
-.menu,
-.branding {
-  flex: 1 1 (100% - 70%) / 2;
-}
+  &.centered {
+    flex: 3 0 70%;
+    justify-content: center;
+  }
 
-.menu {
-  text-align: right;
+  &.left-aligned {
+    flex: 1 0 15%;
+    justify-content: flex-start;
+  }
+
+  &.right-aligned {
+    flex: 1 0 15%;
+    justify-content: flex-end;
+  }
 }

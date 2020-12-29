@@ -1,17 +1,19 @@
 <header class="sticky-header">
   <mat-toolbar color="primary">
-    <button
-      *ngIf="showMainNavigation"
-      mat-icon-button
-      class="side-navigation-toggle"
-      (click)="toggleSideNavigation.emit()"
-    >
-      <mat-icon>menu</mat-icon>
-    </button>
-    <app-logo class="branding"></app-logo>
+    <div class="left-aligned container">
+      <button
+        *ngIf="showSideNavigation"
+        mat-icon-button
+        class="side-navigation-trigger"
+        (click)="sideNavigationToggled.emit()"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      <app-logo></app-logo>
+    </div>
 
     <!-- Navigation -->
-    <nav *ngIf="!showMainNavigation" class="navigation">
+    <nav *ngIf="showMainNavigation" class="centered container">
       <a mat-button [routerLink]="navigationConfig.mainNavigation.explore.reference">
         <mat-icon>{{ navigationConfig.mainNavigation.explore.iconName }}</mat-icon>
         {{ navigationConfig.mainNavigation.explore.label }}
@@ -32,9 +34,9 @@
     </nav>
 
     <!-- Login, Register, Menu -->
-    <div class="menu">
-      <a mat-button [routerLink]="'/'">
-        <mat-icon>login</mat-icon> Anmelden
+    <div class="right-aligned container">
+      <a mat-icon-button [routerLink]="'/'">
+        <mat-icon>login</mat-icon>
       </a>
     </div>
   </mat-toolbar>

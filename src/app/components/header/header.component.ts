@@ -14,9 +14,12 @@ export class HeaderComponent {
   showMainNavigation: boolean;
 
   @Input()
+  showSideNavigation: boolean;
+
+  @Input()
   navigationConfig: NavigationConfig;
 
   @Output()
-  toggleSideNavigation = new EventEmitter();
+  sideNavigationToggled = new EventEmitter();
 
 }
