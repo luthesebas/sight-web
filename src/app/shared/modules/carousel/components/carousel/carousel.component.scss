@@ -1,0 +1,43 @@
+:host {
+  display: block;
+  position: relative;
+  height: min-content;
+}
+
+.carousel-control {
+  position: absolute;
+  top: 0;
+  padding: 1.5rem 1rem;
+  font-weight: bold;
+  line-height: 1rem;
+  height: calc(100% - 2rem - 5.5px);
+  color: rgba(255, 255, 255, 0.5);
+
+  &:hover {
+    color: white;
+  }
+
+  &.previous {
+    left: 0;
+  }
+
+  &.next {
+    right: 0;
+  }
+
+  &.compact {
+    height: 100%;
+  }
+}
+
+.carousel-indicators {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+
+  mat-radio-button.carousel-indicator {
+    width: 21.5px;
+  }
+}
