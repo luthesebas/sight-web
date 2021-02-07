@@ -27,10 +27,10 @@ import { SOCIAL_MEDIA_CONFIG, SOCIAL_MEDIA_VALUE } from './config/social-media.c
 @NgModule({
   declarations: [
     AppComponent,
+    LogoComponent,
+    HeaderComponent,
     FooterComponent,
     PageNotFoundComponent,
-    HeaderComponent,
-    LogoComponent
   ],
   imports: [
     BrowserModule,

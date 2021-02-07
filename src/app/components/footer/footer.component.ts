@@ -1,7 +1,6 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
 
-import { Link } from 'src/app/shared/models/common/link.model';
-import { LinkGroup } from 'src/app/shared/models/common/link-group.model';
+import { Link, LinkGroup } from 'src/app/shared/models/common/link.model';
 
 @Component({
   selector: 'app-footer',

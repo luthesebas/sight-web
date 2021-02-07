@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { NavigationConfig } from 'src/app/shared/models/common/navigation-config.model';
+import { NavigationConfig } from 'src/app/config/navigation.config';
 
 @Component({
   selector: 'app-header',

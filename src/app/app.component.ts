@@ -4,10 +4,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
-import { NAVIGATION_CONFIG } from './config/navigation.config';
-import { SOCIAL_MEDIA_CONFIG } from './config/social-media.config';
-import { NavigationConfig } from './shared/models/common/navigation-config.model';
-import { SocialMediaConfig } from './shared/models/common/social-media-config.model';
+import { NAVIGATION_CONFIG, NavigationConfig } from './config/navigation.config';
+import { SOCIAL_MEDIA_CONFIG, SocialMediaConfig } from './config/social-media.config';
 
 @Component({
   selector: 'app-root',

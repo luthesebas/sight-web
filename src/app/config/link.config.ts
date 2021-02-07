@@ -1,5 +1,4 @@
-import { Link } from '../shared/models/common/link.model';
-import { LinkGroup } from '../shared/models/common/link-group.model';
+import { Link, LinkGroup } from '../shared/models/common/link.model';
 
 export const home: Link = {
   reference: '/',

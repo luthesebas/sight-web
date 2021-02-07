@@ -3,3 +3,8 @@ export interface Link {
   reference: string;
   iconName?: string;
 }
+
+export interface LinkGroup {
+  label: string;
+  links: Link[];
+}
