@@ -12,6 +12,7 @@
   width: calc(100% - 2rem);
   margin: 1rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
 
   @media screen and (min-width: 599px) {
