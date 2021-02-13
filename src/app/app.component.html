@@ -32,15 +32,16 @@
 
     <!-- Header -->
     <app-header
-      [showMainNavigation]="isHandset$ | async"
+      [showMainNavigation]="mediaService.isStationaryDevice$ | async"
+      [showSideNavigation]="mediaService.isMobileDevice$ | async"
       [navigationConfig]="navigationConfig"
-      (toggleSideNavigation)="sideNavigation.toggle()"
+      (sideNavigationToggled)="sideNavigation.toggle()"
     ></app-header>
 
     <!-- Content -->
-    <div class="content">
+    <main class="content">
       <router-outlet></router-outlet>
-    </div>
+    </main>
 
     <!-- Footer -->
     <app-footer
