@@ -12,6 +12,11 @@
     "p:fix": "prettier --config ./.prettierrc.json --parser angular --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
     "p:check": "prettier --config ./.prettierrc.json --parser angular --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\""
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run p:fix"
+    }
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.0.0",
