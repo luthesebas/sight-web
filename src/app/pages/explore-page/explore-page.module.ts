@@ -13,18 +13,16 @@ import { RecipeModule } from './../../shared/modules/recipe/recipe.module';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
 
 @NgModule({
-  declarations: [
-    ExploreViewComponent
-  ],
-  imports: [
-    CommonModule,
-    ExplorePageRoutingModule,
-    RecipeModule,
+    declarations: [ExploreViewComponent],
+    imports: [
+        CommonModule,
+        ExplorePageRoutingModule,
+        RecipeModule,
 
-    // NgRx
-    StoreModule.forFeature('explore', fromExplore.reducer),
-    EffectsModule.forFeature([ExploreEffects])
-  ],
-  providers: []
+        // NgRx
+        StoreModule.forFeature('explore', fromExplore.reducer),
+        EffectsModule.forFeature([ExploreEffects]),
+    ],
+    providers: [],
 })
-export class ExplorePageModule { }
+export class ExplorePageModule {}

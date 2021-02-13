@@ -1,36 +1,36 @@
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 
 // https://material.angular.io/guide/theming-your-components
 // https://material.angular.io/guide/typography
 
 @mixin app-footer-theme($theme) {
-  $font-config: mat-typography-config();
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
-  $foreground: map-get($theme, foreground);
+    $font-config: mat-typography-config();
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
 
-  .footer {
-    color: mat-color($primary, 100);
-    background-color: mat-color($primary);
+    .footer {
+        color: mat-color($primary, 100);
+        background-color: mat-color($primary);
 
-    h2,
-    h3,
-    h4 {
-      color: white;
+        h2,
+        h3,
+        h4 {
+            color: white;
+        }
+
+        a {
+            color: mat-color($primary, 100);
+
+            &:hover {
+                color: white;
+            }
+        }
     }
 
-    a {
-      color: mat-color($primary, 100);
-
-      &:hover {
+    .link-group-container {
         color: white;
-      }
     }
-  }
-
-  .link-group-container {
-    color: white;
-  }
 }

@@ -1,82 +1,82 @@
 :host {
-  display: block;
+    display: block;
 }
 
 .footer {
-  margin-top: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .social-media-links {
-  margin: 2rem 0;
-  text-align: center;
+    margin: 2rem 0;
+    text-align: center;
 
-  a {
-    padding: 8px;
-    margin: 0.5rem;
-  }
+    a {
+        padding: 8px;
+        margin: 0.5rem;
+    }
 
-  .fab {
-    font-size: 32px;
-    width: 32px;
-  }
+    .fab {
+        font-size: 32px;
+        width: 32px;
+    }
 }
 
 .link-group-container {
-  margin: 2rem 0;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 
-  @media screen and (max-width: 599px) {
-    flex-direction: column;
-  }
+    @media screen and (max-width: 599px) {
+        flex-direction: column;
+    }
 }
 
 .link-group {
-  width: fit-content;
-  margin: 0 2rem;
+    width: fit-content;
+    margin: 0 2rem;
 
-  @media screen and (max-width: 599px) {
-    width: 100%;
-    margin: 1rem 0;
-    text-align: center;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      padding: 8px 0;
-    }
-  }
-
-  a {
-    &:link,
-    &:visited {
-      text-decoration: none;
+    @media screen and (max-width: 599px) {
+        width: 100%;
+        margin: 1rem 0;
+        text-align: center;
     }
 
-    &:hover,
-    &:active {
-      text-decoration: underline;
+    ul {
+        list-style-type: none;
+        padding: 0;
+
+        li {
+            padding: 8px 0;
+        }
     }
-  }
+
+    a {
+        &:link,
+        &:visited {
+            text-decoration: none;
+        }
+
+        &:hover,
+        &:active {
+            text-decoration: underline;
+        }
+    }
 }
 
 .link-group-heading {
-  font-weight: bold;
-  margin-bottom: 1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
 }
 
 .legal {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  margin: 32px 0 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 32px 0 16px 0;
 }

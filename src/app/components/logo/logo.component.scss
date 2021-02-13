@@ -1,14 +1,14 @@
 :host {
-  display: inline-block;
+    display: inline-block;
 }
 
 .branding {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  img {
-    height: 32px;
-    width: auto;
-    padding: 8px 0;
-  }
+    img {
+        height: 32px;
+        width: auto;
+        padding: 8px 0;
+    }
 }

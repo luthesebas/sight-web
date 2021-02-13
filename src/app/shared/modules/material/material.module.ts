@@ -14,38 +14,38 @@ import { MatRadioModule } from '@angular/material/radio';
 import { LayoutModule } from '@angular/cdk/layout';
 
 import {
-  MatFormFieldDefaultOptions,
-  MAT_FORM_FIELD_DEFAULT_OPTIONS
+    MatFormFieldDefaultOptions,
+    MAT_FORM_FIELD_DEFAULT_OPTIONS,
 } from '@angular/material/form-field';
 
 const materialModules = [
-  CommonModule,
-  MatSidenavModule,
-  MatToolbarModule,
-  MatMenuModule,
-  MatButtonModule,
-  MatIconModule,
-  MatListModule,
-  MatCardModule,
-  MatInputModule,
-  MatRadioModule,
+    CommonModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatButtonModule,
+    MatIconModule,
+    MatListModule,
+    MatCardModule,
+    MatInputModule,
+    MatRadioModule,
 
-  LayoutModule
+    LayoutModule,
 ];
 
 @NgModule({
-  declarations: [],
-  imports: materialModules,
-  exports: materialModules,
-  providers: [
-    {
-      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: <MatFormFieldDefaultOptions>{
-        appearance: 'fill',
-        hideRequiredMarker: true,
-        floatLabel: 'auto'
-      }
-    }
-  ]
+    declarations: [],
+    imports: materialModules,
+    exports: materialModules,
+    providers: [
+        {
+            provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+            useValue: <MatFormFieldDefaultOptions>{
+                appearance: 'fill',
+                hideRequiredMarker: true,
+                floatLabel: 'auto',
+            },
+        },
+    ],
 })
-export class MaterialModule { }
+export class MaterialModule {}

@@ -1,19 +1,19 @@
 :host {
-  display: block;
+    display: block;
 
-  > * + * {
-    margin: 2.5rem 0 0 0;
-  }
+    > * + * {
+        margin: 2.5rem 0 0 0;
+    }
 }
 
 article > a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 app-recipe-card {
-  transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
 
-  &:hover {
-    transform: scale(1.05);
-  }
+    &:hover {
+        transform: scale(1.05);
+    }
 }

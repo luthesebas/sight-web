@@ -1,26 +1,26 @@
 :host {
-  display: block;
+    display: block;
 }
 
 .recipe-card {
-  border-radius: 4px;
+    border-radius: 4px;
 }
 
 .recipe-card-header {
-  margin-left: -1rem;
-  margin-right: -1rem;
+    margin-left: -1rem;
+    margin-right: -1rem;
 }
 
 .recipe-cover-image {
-  display: block;
-  margin: 0 auto 16px auto;
-  max-width: 100%;
-  height: auto;
+    display: block;
+    margin: 0 auto 16px auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .recipe-subtitle-content {
-  padding-top: 8px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }

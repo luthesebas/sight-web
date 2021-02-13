@@ -11,22 +11,8 @@ import { RecipeDetailsComponent } from './components/recipe-details/recipe-detai
 import { RecipeCardComponent } from './components/recipe-card/recipe-card.component';
 
 @NgModule({
-  declarations: [
-    RecipeListComponent,
-    RecipeDetailsComponent,
-    RecipeCardComponent,
-  ],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MaterialModule,
-    RatingModule,
-    TruncateModule,
-  ],
-  exports: [
-    RecipeListComponent,
-    RecipeDetailsComponent,
-    RecipeCardComponent
-  ]
+    declarations: [RecipeListComponent, RecipeDetailsComponent, RecipeCardComponent],
+    imports: [CommonModule, RouterModule, MaterialModule, RatingModule, TruncateModule],
+    exports: [RecipeListComponent, RecipeDetailsComponent, RecipeCardComponent],
 })
-export class RecipeModule { }
+export class RecipeModule {}

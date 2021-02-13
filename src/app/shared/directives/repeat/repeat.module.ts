@@ -3,14 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RepeatDirective } from './repeat.directive';
 
 @NgModule({
-  declarations: [
-    RepeatDirective
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    RepeatDirective
-  ]
+    declarations: [RepeatDirective],
+    imports: [CommonModule],
+    exports: [RepeatDirective],
 })
-export class RepeatModule { }
+export class RepeatModule {}

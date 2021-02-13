@@ -5,19 +5,19 @@ import { RECIPE_PAGE_PATHS } from 'src/app/pages/recipe-page/recipe-page-routing
 import { RecipePageViewComponent } from './recipe-page-view/recipe-page-view.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RecipePageViewComponent,
-  },
-  {
-    path: RECIPE_PAGE_PATHS.one.path,
-    data: { pathConfig: RECIPE_PAGE_PATHS.one },
-    component: RecipePageViewComponent,
-  }
+    {
+        path: '',
+        component: RecipePageViewComponent,
+    },
+    {
+        path: RECIPE_PAGE_PATHS.one.path,
+        data: { pathConfig: RECIPE_PAGE_PATHS.one },
+        component: RecipePageViewComponent,
+    },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class RecipePageRoutingModule { }
+export class RecipePageRoutingModule {}

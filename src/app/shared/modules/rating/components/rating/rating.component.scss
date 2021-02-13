@@ -1,9 +1,9 @@
 .rating-container {
-  display: flex;
-  align-items: center;
-  width: max-content;
+    display: flex;
+    align-items: center;
+    width: max-content;
 
-  > mat-icon {
-    color: orange;
-  }
+    > mat-icon {
+        color: orange;
+    }
 }
