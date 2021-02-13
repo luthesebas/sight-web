@@ -1,0 +1,43 @@
+# Project Specific
+
+
+# ----------------------------
+# Ignore artifacts
+
+dist
+build
+coverage
+target
+
+# ----------------------------
+# Ignore editor files
+
+#.vscode
+#.code-workspace
+#.editorconfig
+
+# ----------------------------
+# VC
+
+#.gitignore
+
+# ----------------------------
+# Ignore node and npm files
+
+node_modules
+package.json
+package-lock.json
+
+# ----------------------------
+# TS
+
+#tsconfig.json
+#tslint.json
+
+# ----------------------------
+# Angular
+
+#angular.json
+#.browserslistrc
+#protractor.conf.js
+#tsconfig.e2e.json
