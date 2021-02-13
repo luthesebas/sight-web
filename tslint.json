@@ -32,7 +32,7 @@
     "max-classes-per-file": false,
     "max-line-length": [
       true,
-      140
+      90
     ],
     "member-access": false,
     "member-ordering": [
@@ -116,8 +116,8 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
-  ,    "variable-name": {
+    "directive-class-suffix": true,
+    "variable-name": {
       "options": [
         "ban-keywords",
         "check-format",
@@ -134,5 +134,5 @@
         "check-typecast"
       ]
     }
-}
+  }
 }
