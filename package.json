@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "p:fix": "prettier --config ./.prettierrc.json --parser angular --write \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
+    "p:check": "prettier --config ./.prettierrc.json --parser angular --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\""
   },
   "private": true,
   "dependencies": {
