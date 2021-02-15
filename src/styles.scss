@@ -1,44 +1,44 @@
-@import "~@angular/material/theming";
+@import '~@angular/material/theming';
 
 // Only ever include this mixin once!
 @include mat-core();
 
 // Custom Angular Material Themes
-@import "themes/light-theme.scss";
-@import "themes/dark-theme.scss";
+@import 'themes/light-theme.scss';
+@import 'themes/dark-theme.scss';
 
 //Custom Component Themes
-@import "./custom-component-themes.scss";
+@import './themes/custom-component-themes.scss';
 
 .light-theme {
-  @include angular-material-theme($app-light-theme);
-  @include custom-components-theme($app-light-theme);
+    @include angular-material-theme($app-light-theme);
+    @include custom-components-theme($app-light-theme);
 }
 
 .dark-theme {
-  @include angular-material-theme($app-dark-theme);
-  @include custom-components-theme($app-dark-theme);
+    @include angular-material-theme($app-dark-theme);
+    @include custom-components-theme($app-dark-theme);
 }
 
 // Global Styles
 
 html,
 body {
-  height: 100%;
+    height: 100%;
 }
 
 body {
-  margin: 0;
-  background-color: rgb(241, 241, 241);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  line-height: 1.2;
+    margin: 0;
+    background-color: rgb(241, 241, 241);
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
+    line-height: 1.2;
 }
 
 img {
-  max-width: 100%;
-  height: auto;
+    max-width: 100%;
+    height: auto;
 }
 
 .mat-card-header-text {
-  flex-grow: 1;
+    flex-grow: 1;
 }

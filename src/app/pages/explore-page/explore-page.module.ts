@@ -1,16 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { StoreModule } from '@ngrx/store';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 
-import * as fromExplore from './redux/reducers/explore.reducer';
-import { ExploreEffects } from './redux/effects/explore.effects';
-
+import { RecipeModule } from '../../shared/modules/recipe/recipe.module';
 import { ExplorePageRoutingModule } from './explore-page-routing.module';
-
-import { RecipeModule } from './../../shared/modules/recipe/recipe.module';
 import { ExploreViewComponent } from './explore-view/explore-view.component';
+import { ExploreEffects } from './redux/explore.effects';
+import * as fromExplore from './redux/explore.reducer';
 
 @NgModule({
     declarations: [ExploreViewComponent],

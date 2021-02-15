@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
 
@@ -10,9 +10,9 @@ import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
 })
 export class RecipeListComponent {
     @Input()
-    public recipes: Recipe[];
+    public recipes: Recipe[] | null = null;
 
-    public trackRecipe(index: number, recipe: Recipe): number {
+    public trackRecipe(index: number, recipe: Recipe) {
         return recipe ? recipe.id : null;
     }
 }

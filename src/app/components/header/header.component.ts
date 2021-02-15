@@ -1,3 +1,4 @@
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import {
     ChangeDetectionStrategy,
     Component,
@@ -15,15 +16,32 @@ import { NavigationConfig } from 'src/app/config/navigation.config';
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-    @Input()
-    showMainNavigation: boolean;
+    private _showMainNavigation: boolean = true;
+    private _showSideNavigation: boolean = false;
 
     @Input()
-    showSideNavigation: boolean;
-
-    @Input()
-    navigationConfig: NavigationConfig;
+    navigationConfig!: NavigationConfig;
 
     @Output()
     sideNavigationToggled = new EventEmitter();
+
+    // ------------------------------------------------------------------------
+    // Getters and Setters
+    // ------------------------------------------------------------------------
+
+    @Input()
+    set showMainNavigation(value: any) {
+        this._showMainNavigation = coerceBooleanProperty(value);
+    }
+    get showMainNavigation() {
+        return this._showMainNavigation;
+    }
+
+    @Input()
+    set showSideNavigation(value: any) {
+        this._showSideNavigation = coerceBooleanProperty(value);
+    }
+    get showSideNavigation() {
+        return this._showSideNavigation;
+    }
 }

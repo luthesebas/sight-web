@@ -14,23 +14,9 @@
 
     <!-- Navigation -->
     <nav *ngIf="showMainNavigation" class="centered container">
-      <a mat-button [routerLink]="navigationConfig.mainNavigation.explore.reference">
-        <mat-icon>{{ navigationConfig.mainNavigation.explore.iconName }}</mat-icon>
-        {{ navigationConfig.mainNavigation.explore.label }}
-      </a>
-
-      <button mat-button [matMenuTriggerFor]="cookbookMenu">
-        <mat-icon>{{ navigationConfig.mainNavigation.cookBook.iconName }}</mat-icon>
-        {{ navigationConfig.mainNavigation.cookBook.label }}
-      </button>
-      <mat-menu #cookbookMenu="matMenu">
-        <ng-container *ngFor="let menu of navigationConfig.mainNavigation.cookBook.subMenus">
-          <a mat-menu-item [routerLink]="menu.reference">
-            <mat-icon>{{ menu.iconName }}</mat-icon>
-            {{ menu.label }}
-          </a>
-        </ng-container>
-      </mat-menu>
+      <ng-container *ngFor="let menu of navigationConfig.mainNavigation">
+        <ng-container *ngTemplateOutlet="menu.links ? headerMenu : headerLink; context:{ 'value': menu }"></ng-container>
+      </ng-container>
     </nav>
 
     <!-- Login, Register, Menu -->
@@ -41,3 +27,26 @@
     </div>
   </mat-toolbar>
 </header>
+
+
+<ng-template #headerLink let-menu="value">
+  <a mat-button [routerLink]="menu.self.reference">
+    <mat-icon>{{ menu.self.iconName }}</mat-icon>
+    {{ menu.self.label }}
+  </a>
+</ng-template>
+
+<ng-template #headerMenu let-menu="value">
+  <button mat-button [matMenuTriggerFor]="matMenu">
+    <mat-icon>{{ menu.self.iconName }}</mat-icon>
+    {{ menu.self.label }}
+  </button>
+  <mat-menu #matMenu="matMenu">
+    <ng-container *ngFor="let link of menu.links">
+      <a mat-menu-item [routerLink]="link.reference">
+        <mat-icon>{{ link.iconName }}</mat-icon>
+        {{ link.label }}
+      </a>
+    </ng-container>
+  </mat-menu>
+</ng-template>

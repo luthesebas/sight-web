@@ -1,24 +1,18 @@
 import { InjectionToken } from '@angular/core';
 
 import { Link, LinkGroup } from '../shared/models/common/link.model';
-
 import * as LINKS from './link.config';
 
 export interface NavigationConfig {
     sideNavigation: Link[];
-    mainNavigation: {
-        explore: Link;
-        cookBook: Menu;
-    };
+    mainNavigation: Menu[];
     allLinkGroups: LinkGroup[];
 }
 
 export interface Menu {
-    id?: string;
-    label: string;
-    reference?: string;
-    iconName?: string;
-    subMenus?: Menu[];
+    id: string;
+    self: Link;
+    links?: Link[];
 }
 
 export const NAVIGATION_CONFIG = new InjectionToken<NavigationConfig>(
@@ -27,14 +21,20 @@ export const NAVIGATION_CONFIG = new InjectionToken<NavigationConfig>(
 
 export const NAVIGATION_CONFIG_VALUE: NavigationConfig = {
     sideNavigation: [LINKS.explore, LINKS.cookBook],
-    mainNavigation: {
-        explore: LINKS.explore,
-        cookBook: {
-            id: 'cookbookMenu',
-            label: 'Kochbuch',
-            iconName: 'book',
-            subMenus: [{ ...LINKS.cookBook }],
+    mainNavigation: [
+        {
+            id: 'exploreMenu',
+            self: LINKS.explore,
         },
-    },
+        {
+            id: 'cookbookMenu',
+            self: {
+                label: 'Kochbuch',
+                iconName: 'book',
+                reference: '', // TODO
+            },
+            links: [LINKS.cookBook],
+        },
+    ],
     allLinkGroups: [LINKS.recipeLinkGroup, LINKS.enterpriseLinkGroup],
 };

@@ -1,10 +1,10 @@
 import {
-    AfterViewInit,
-    ChangeDetectionStrategy,
-    Component,
-    ContentChildren,
-    Input,
-    QueryList,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ContentChildren,
+  Input,
+  QueryList
 } from '@angular/core';
 
 import { CarouselSlideComponent } from '../carousel-slide/carousel-slide.component';
@@ -22,7 +22,7 @@ export class CarouselComponent implements AfterViewInit {
     @Input()
     showIndicators: boolean = true;
 
-    @ContentChildren(CarouselSlideComponent) slides: QueryList<CarouselSlideComponent>;
+    @ContentChildren(CarouselSlideComponent) slides: QueryList<CarouselSlideComponent> = new QueryList();
 
     private _selectedSlideIndex: number = 0;
     public get selectedSlideIndex() {

@@ -12,14 +12,14 @@ target
 # ----------------------------
 # Ignore editor files
 
-#.vscode
-#.code-workspace
-#.editorconfig
+.vscode
+.code-workspace
+.editorconfig
 
 # ----------------------------
 # VC
 
-#.gitignore
+.gitignore
 
 # ----------------------------
 # Ignore node and npm files
@@ -31,13 +31,16 @@ package-lock.json
 # ----------------------------
 # TS
 
-#tsconfig.json
-#tslint.json
+tslint.json
 
 # ----------------------------
 # Angular
 
-#angular.json
-#.browserslistrc
-#protractor.conf.js
-#tsconfig.e2e.json
+angular.json
+.browserslistrc
+tsconfig.json
+tsconfig.app.json
+tsconfig.spec.json
+tsconfig.e2e.json
+protractor.conf.js
+karma.conf.js

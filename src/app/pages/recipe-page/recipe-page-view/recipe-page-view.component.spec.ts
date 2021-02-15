@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecipePageViewComponent } from './recipe-page-view.component';
 
@@ -6,13 +6,11 @@ describe('RecipePageViewComponent', () => {
     let component: RecipePageViewComponent;
     let fixture: ComponentFixture<RecipePageViewComponent>;
 
-    beforeEach(
-        waitForAsync(() => {
-            TestBed.configureTestingModule({
-                declarations: [RecipePageViewComponent],
-            }).compileComponents();
-        })
-    );
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [RecipePageViewComponent],
+        }).compileComponents();
+    });
 
     beforeEach(() => {
         fixture = TestBed.createComponent(RecipePageViewComponent);

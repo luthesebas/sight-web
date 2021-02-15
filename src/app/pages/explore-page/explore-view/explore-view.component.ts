@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Store } from '@ngrx/store';
+
 import { Observable } from 'rxjs';
-
-import { ExploreState } from '../redux/reducers/explore.reducer';
-import {
-    getRandomRecipesLoading,
-    getRandomRecipes,
-} from '../redux/selectors/explore.selectors';
-import { LoadRandomRecipes } from '../redux/actions/explore.actions';
-
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
+
+import { LoadRandomRecipes } from '../redux/explore.actions';
+import { ExploreState } from '../redux/explore.reducer';
+import { getRandomRecipes, getRandomRecipesLoading } from '../redux/explore.selectors';
 
 @Component({
     selector: 'app-explore-view',

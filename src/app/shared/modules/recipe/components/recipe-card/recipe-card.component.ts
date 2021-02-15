@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
 
@@ -10,5 +10,5 @@ import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
 })
 export class RecipeCardComponent {
     @Input()
-    recipe: Recipe;
+    recipe: Recipe | null = null;
 }
