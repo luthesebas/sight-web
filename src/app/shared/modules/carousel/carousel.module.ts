@@ -6,20 +6,9 @@ import { MaterialModule } from '../material/material.module';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { CarouselSlideComponent } from './components/carousel-slide/carousel-slide.component';
 
-
-
 @NgModule({
-  declarations: [
-    CarouselComponent,
-    CarouselSlideComponent
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule
-  ],
-  exports: [
-    CarouselComponent,
-    CarouselSlideComponent
-  ]
+    declarations: [CarouselComponent, CarouselSlideComponent],
+    imports: [CommonModule, MaterialModule],
+    exports: [CarouselComponent, CarouselSlideComponent],
 })
-export class CarouselModule { }
+export class CarouselModule {}

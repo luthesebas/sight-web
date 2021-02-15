@@ -6,20 +6,17 @@ import { SOCIAL_MEDIA_CONFIG, SocialMediaConfig } from './config/social-media.co
 import { MediaService } from './shared/media/services/media.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit {
+    constructor(
+        @Inject(NAVIGATION_CONFIG) readonly navigationConfig: NavigationConfig,
+        @Inject(SOCIAL_MEDIA_CONFIG) readonly socialMediaConfig: SocialMediaConfig,
+        public mediaService: MediaService
+    ) {}
 
-  constructor(
-    @Inject(NAVIGATION_CONFIG) readonly navigationConfig: NavigationConfig,
-    @Inject(SOCIAL_MEDIA_CONFIG) readonly socialMediaConfig: SocialMediaConfig,
-    public mediaService: MediaService,
-  ) {}
-
-  public ngOnInit() {
-  }
-
+    public ngOnInit() {}
 }

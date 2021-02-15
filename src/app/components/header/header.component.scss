@@ -1,29 +1,29 @@
 .sticky-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .side-navigation-trigger {
-  margin-right: 1rem;
+    margin-right: 1rem;
 }
 
 .container {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 
-  &.centered {
-    flex: 3 0 70%;
-    justify-content: center;
-  }
+    &.centered {
+        flex: 3 0 70%;
+        justify-content: center;
+    }
 
-  &.left-aligned {
-    flex: 1 0 15%;
-    justify-content: flex-start;
-  }
+    &.left-aligned {
+        flex: 1 0 15%;
+        justify-content: flex-start;
+    }
 
-  &.right-aligned {
-    flex: 1 0 15%;
-    justify-content: flex-end;
-  }
+    &.right-aligned {
+        flex: 1 0 15%;
+        justify-content: flex-end;
+    }
 }

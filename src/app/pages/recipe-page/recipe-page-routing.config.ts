@@ -3,24 +3,22 @@ import { NumberPathParameter } from 'src/app/shared/routing/models/path-paramete
 import { PathParameterMap } from 'src/app/shared/routing/models/path-parameter-map.model';
 
 const pathVariables = {
-  recipeId: new NumberPathParameter('recipeId')
-}
+    recipeId: new NumberPathParameter('recipeId'),
+};
 
-const pathQueries = {
-
-}
+const pathQueries = {};
 
 export type RecipePageParameters = PathParameterMap<
-  typeof pathVariables,
-  typeof pathQueries
+    typeof pathVariables,
+    typeof pathQueries
 >;
 
 export const RECIPE_PAGE_PATHS = {
-  root: <PathConfig>{
-    path: 'recipe'
-  },
-  one: <PathConfig>{
-    path: `:${pathVariables.recipeId.name}`,
-    variables: [ pathVariables.recipeId ]
-  },
-}
+    root: <PathConfig>{
+        path: 'recipe',
+    },
+    one: <PathConfig>{
+        path: `:${pathVariables.recipeId.name}`,
+        variables: [pathVariables.recipeId],
+    },
+};

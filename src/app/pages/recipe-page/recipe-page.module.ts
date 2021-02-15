@@ -7,15 +7,13 @@ import { RecipeModule } from '../../shared/modules/recipe/recipe.module';
 import { RecipePageViewComponent } from './recipe-page-view/recipe-page-view.component';
 
 @NgModule({
-  declarations: [
-    RecipePageViewComponent
-  ],
-  imports: [
-    CommonModule,
-    RecipePageRoutingModule,
-    RecipeModule,
+    declarations: [RecipePageViewComponent],
+    imports: [
+        CommonModule,
+        RecipePageRoutingModule,
+        RecipeModule,
 
-    // NgRx
-  ]
+        // NgRx
+    ],
 })
-export class RecipePageModule { }
+export class RecipePageModule {}

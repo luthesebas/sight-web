@@ -9,18 +9,8 @@ import { RatingComponent } from './components/rating/rating.component';
 import { RatingStarIconPipe } from './pipes/rating-star-icon.pipe';
 
 @NgModule({
-  declarations: [
-    RatingComponent,
-    RatingStarIconPipe
-  ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    RepeatModule,
-    AbbreviateModule
-  ],
-  exports: [
-    RatingComponent
-  ]
+    declarations: [RatingComponent, RatingStarIconPipe],
+    imports: [CommonModule, MaterialModule, RepeatModule, AbbreviateModule],
+    exports: [RatingComponent],
 })
-export class RatingModule { }
+export class RatingModule {}

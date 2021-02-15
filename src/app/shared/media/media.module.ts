@@ -4,13 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MediaMatchModule } from './directives/media-match/media-match.module';
 
 @NgModule({
-  declarations: [],
-  imports: [
-    CommonModule,
-    MediaMatchModule
-  ],
-  exports: [
-    MediaMatchModule
-  ]
+    declarations: [],
+    imports: [CommonModule, MediaMatchModule],
+    exports: [MediaMatchModule],
 })
-export class MediaModule { }
+export class MediaModule {}
