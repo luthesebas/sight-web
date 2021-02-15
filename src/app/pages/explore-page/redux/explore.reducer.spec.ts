@@ -1,4 +1,4 @@
-import { reducer, initialState } from './explore.reducer';
+import { initialState, reducer } from './explore.reducer';
 
 describe('Explore Reducer', () => {
     describe('an unknown action', () => {

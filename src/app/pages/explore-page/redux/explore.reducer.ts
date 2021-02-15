@@ -1,5 +1,6 @@
-import { ExploreActions, ExploreActionTypes } from '../actions/explore.actions';
 import { Recipe } from 'src/app/shared/models/recipe/recipe.model';
+
+import { ExploreActions, ExploreActionTypes } from './explore.actions';
 
 export interface ExploreState {
     recipes: Recipe[];

@@ -2,16 +2,15 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import { of } from 'rxjs';
-import { switchMap, map, catchError } from 'rxjs/operators';
+import { catchError, map, switchMap } from 'rxjs/operators';
+import { RecipeService } from 'src/app/shared/modules/recipe/services/recipe.service';
 
 import {
-    ExploreActionTypes,
     ExploreActions,
-    LoadRandomRecipesSuccess,
+    ExploreActionTypes,
     LoadRandomRecipesFailure,
-} from '../actions/explore.actions';
-
-import { RecipeService } from 'src/app/shared/modules/recipe/services/recipe.service';
+    LoadRandomRecipesSuccess
+} from './explore.actions';
 
 @Injectable()
 export class ExploreEffects {

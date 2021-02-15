@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { ExploreState } from '../reducers/explore.reducer';
+
+import { ExploreState } from './explore.reducer';
 
 export const getExploreState = createFeatureSelector<ExploreState>('explore');
 
