@@ -1,4 +1,4 @@
-<mat-card class="recipe-card">
+<mat-card *ngIf="recipe" class="recipe-card">
   <mat-card-header class="recipe-card-header">
     <mat-card-title>
       {{ recipe.details.title | truncate: 150 : true }}

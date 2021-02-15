@@ -3,15 +3,14 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 import { combineLatest, Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
-
-import {
-    PathParameter,
-    BooleanPathParameter,
-    NumberPathParameter,
-    StringPathParameter,
-} from 'src/app/shared/routing/models/path-parameter.model';
 import { PathConfig } from 'src/app/shared/routing/models/path-config.model';
 import { PathParameterMap } from 'src/app/shared/routing/models/path-parameter-map.model';
+import {
+    BooleanPathParameter,
+    NumberPathParameter,
+    PathParameter,
+    StringPathParameter,
+} from 'src/app/shared/routing/models/path-parameter.model';
 
 @Injectable({
     providedIn: 'root',
@@ -76,7 +75,7 @@ export class RouteParameters {
         return queries;
     }
 
-    private lift(pathParameter: PathParameter<any>, value: string) {
+    private lift(pathParameter: PathParameter<any>, value: string | null) {
         if (pathParameter instanceof StringPathParameter) {
             return new StringPathParameter(pathParameter.name, value);
         }

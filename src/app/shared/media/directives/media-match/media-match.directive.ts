@@ -1,11 +1,5 @@
-import {
-    Directive,
-    Input,
-    OnDestroy,
-    TemplateRef,
-    ViewContainerRef,
-} from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { Directive, Input, OnDestroy, TemplateRef, ViewContainerRef } from '@angular/core';
 
 /**
  * Media Queries:
@@ -29,8 +23,8 @@ import { MediaMatcher } from '@angular/cdk/layout';
 export class MediaMatchDirective implements OnDestroy {
     private hasView: boolean = false;
 
-    private mqList: MediaQueryList;
-    private mqListener: (mql: MediaQueryList) => void;
+    private mqList: MediaQueryList | null = null;
+    private mqListener: ((mql: MediaQueryList) => void) | null = null;
 
     constructor(
         private templateRef: TemplateRef<any>,
@@ -39,7 +33,9 @@ export class MediaMatchDirective implements OnDestroy {
     ) {}
 
     public ngOnDestroy() {
-        this.mqList.removeEventListener('change', () => this.mqListener, false);
+        if (this.mqList) {
+          this.mqList.removeEventListener('change', () => this.mqListener, false);
+        }
         this.mqList = null;
         this.mqListener = null;
     }

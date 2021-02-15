@@ -11,8 +11,8 @@ import { Recipe } from '../../../models/recipe/recipe.model';
 })
 export class RecipeService {
     // TODO: Replace with HttpCall
-    private readonly recipes$: Observable<Recipe[]> = of([
-        {
+    private readonly recipes$: Observable<Recipe[]> = of(<Recipe[]>[
+        <Recipe>{
             id: 0,
             details: {
                 title:

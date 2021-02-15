@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { Link, LinkGroup } from 'src/app/shared/models/common/link.model';
 
@@ -10,14 +10,10 @@ import { Link, LinkGroup } from 'src/app/shared/models/common/link.model';
 })
 export class FooterComponent {
     @Input()
-    linkGroups: LinkGroup[];
+    linkGroups: LinkGroup[] | null = null;
 
     @Input()
-    socialMediaLinks: Link[];
+    socialMediaLinks: Link[] | null = null;
 
-    public readonly currentYear: number;
-
-    constructor() {
-        this.currentYear = new Date().getFullYear();
-    }
+    readonly currentYear: number = new Date().getFullYear();
 }
