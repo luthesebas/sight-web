@@ -1,7 +1,0 @@
-// Import all custom components themes here
-
-@import "./app/components/footer/footer.component.scss-theme.scss";
-
-@mixin custom-components-theme($theme) {
-  @include app-footer-theme($theme);
-}
