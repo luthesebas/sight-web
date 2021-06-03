@@ -1,9 +1,10 @@
+@use '~@angular/material' as mat;
 // mat-palette: $palette-name, main, light, dark
-$light-theme-primary: mat-palette($mat-green, 600, 300, 900) !default;
-$light-theme-accent: mat-palette($mat-green, 600, 300, 900) !default;
-$light-theme-warn: mat-palette($mat-red, 600) !default;
+$light-theme-primary: mat.define-palette(mat.$green-palette, 600, 300, 900) !default;
+$light-theme-accent: mat.define-palette(mat.$green-palette, 600, 300, 900) !default;
+$light-theme-warn: mat.define-palette(mat.$red-palette, 600) !default;
 
-$app-light-theme-base: mat-light-theme(
+$app-light-theme-base: mat.define-light-theme(
   $light-theme-primary,
   $light-theme-accent,
   $light-theme-warn
@@ -49,25 +50,25 @@ $light-dividers: rgba(white, 0.12);
 $light-focused: rgba(white, 0.12);
 
 // Background palette for light themes.
-$mat-light-theme-background: (
-  status-bar: map_get($mat-grey, 300),
-  app-bar:    map_get($mat-grey, 100),
-  background: map_get($mat-grey, 50),
+mat.$light-theme-background-palette: (
+  status-bar: map_get(mat.$grey-palette, 300),
+  app-bar:    map_get(mat.$grey-palette, 100),
+  background: map_get(mat.$grey-palette, 50),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
   card:       white,
   dialog:     white,
   disabled-button: rgba(black, 0.12),
   raised-button: white,
   focused-button: $dark-focused,
-  selected-button: map_get($mat-grey, 300),
-  selected-disabled-button: map_get($mat-grey, 400),
-  disabled-button-toggle: map_get($mat-grey, 200),
-  unselected-chip: map_get($mat-grey, 300),
-  disabled-list-option: map_get($mat-grey, 200),
+  selected-button: map_get(mat.$grey-palette, 300),
+  selected-disabled-button: map_get(mat.$grey-palette, 400),
+  disabled-button-toggle: map_get(mat.$grey-palette, 200),
+  unselected-chip: map_get(mat.$grey-palette, 300),
+  disabled-list-option: map_get(mat.$grey-palette, 200),
 );
 
 // Foreground palette for light themes.
-$mat-light-theme-foreground: (
+mat.$light-theme-foreground-palette: (
   base:              black,
   divider:           $dark-dividers,
   dividers:          $dark-dividers,

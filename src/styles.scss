@@ -1,7 +1,8 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 // Only ever include this mixin once!
-@include mat-core();
+@include mat.core();
 
 // Custom Angular Material Themes
 @import 'themes/light-theme.scss';
@@ -11,12 +12,12 @@
 @import './themes/custom-component-themes.scss';
 
 .light-theme {
-    @include angular-material-theme($app-light-theme);
+    @include mat.all-component-themes($app-light-theme);
     @include custom-components-theme($app-light-theme);
 }
 
 .dark-theme {
-    @include angular-material-theme($app-dark-theme);
+    @include mat.all-component-themes($app-dark-theme);
     @include custom-components-theme($app-dark-theme);
 }
 

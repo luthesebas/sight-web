@@ -1,10 +1,11 @@
+@use '~@angular/material' as mat;
 @import '~@angular/material/theming';
 
 // https://material.angular.io/guide/theming-your-components
 // https://material.angular.io/guide/typography
 
 @mixin app-footer-theme($theme) {
-    $font-config: mat-typography-config();
+    $font-config: mat.define-typography-config();
     $primary: map-get($theme, primary);
     $accent: map-get($theme, accent);
     $warn: map-get($theme, warn);
@@ -12,8 +13,8 @@
     $foreground: map-get($theme, foreground);
 
     .footer {
-        color: mat-color($primary, 100);
-        background-color: mat-color($primary);
+        color: mat.get-color-from-palette($primary, 100);
+        background-color: mat.get-color-from-palette($primary);
 
         h2,
         h3,
@@ -22,7 +23,7 @@
         }
 
         a {
-            color: mat-color($primary, 100);
+            color: mat.get-color-from-palette($primary, 100);
 
             &:hover {
                 color: white;
