@@ -1,21 +1,18 @@
 :host {
     display: block;
-    position: relative;
     height: min-content;
+}
+
+.carousel-slides-container {
+    position: relative;
 }
 
 .carousel-control {
     position: absolute;
     top: 0;
-    padding: 1.5rem 1rem;
+    height: 100%;
     font-weight: bold;
-    line-height: 1rem;
-    height: calc(100% - 2rem - 5.5px);
-    color: rgba(255, 255, 255, 0.5);
-
-    &:hover {
-        color: white;
-    }
+    z-index: 10;
 
     &.previous {
         left: 0;
@@ -24,10 +21,12 @@
     &.next {
         right: 0;
     }
+}
 
-    &.compact {
-        height: 100%;
-    }
+.carousel-slides {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 }
 
 .carousel-indicators {

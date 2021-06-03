@@ -1,34 +1,43 @@
-<ng-content select="app-carousel-slide"></ng-content>
-
-<ng-container *ngIf="showControls">
+<div class="carousel-slides-container">
   <button
+    *ngIf="showControls"
     mat-button
     class="carousel-control previous"
-    [ngClass]="{'compact': !showIndicators}"
-    (click)="previousSlide()"
+    (click)="showPreviousSlide()"
   >
     &#10094;
   </button>
+
+  <!--
+      <div class="carousel-slides" [@slideInOut]="slideIndex$ | async">
+  -->
+  <div class="carousel-slides">
+    <ng-container
+      *ngFor="let slideComponent of (slideComponents$ | async); let i = index"
+      [ngTemplateOutlet]="slideComponent.templateRef"
+    ></ng-container>
+  </div>
+
   <button
+    *ngIf="showControls"
     mat-button
     class="carousel-control next"
-    [ngClass]="{'compact': !showIndicators}"
-    (click)="nextSlide()"
+    (click)="showNextSlide()"
   >
     &#10095;
   </button>
-</ng-container>
+</div>
 
 <mat-radio-group
   *ngIf="showIndicators"
   class="carousel-indicators"
-  [value]="selectedSlideIndex"
+  [value]="slideIndex$ | async"
 >
   <mat-radio-button
-    *ngFor="let slide of slides; index as i"
+    *ngFor="let slideComponent of (slideComponents$ | async); let i = index"
     class="carousel-indicator"
     color="accent"
     [value]="i"
-    (change)="selectSlideByIndex(i)"
+    (change)="selectSlide(i)"
   ></mat-radio-button>
 </mat-radio-group>
