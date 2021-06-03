@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -38,6 +39,7 @@ import { SOCIAL_MEDIA_CONFIG, SOCIAL_MEDIA_VALUE } from './config/social-media.c
     HttpClientModule,
 
     MaterialModule,
+    ReactiveFormsModule,
 
     // App Modules
     AppRoutingModule, // Must be placed after App Modules

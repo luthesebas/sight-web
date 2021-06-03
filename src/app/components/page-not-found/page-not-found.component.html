@@ -1,3 +1,56 @@
+<form [formGroup]="form">
+  <mat-form-field [appearance]="'outline'">
+    <mat-label>Label</mat-label>
+
+    <input
+      matInput
+      type="text"
+      #searchSelect="matInput"
+      formControlName="user"
+      [matAutocomplete]="auto"
+      (click)="trigger.openPanel()"
+      #trigger="matAutocompleteTrigger"
+    />
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="test.displayUserFn">
+      <ng-container *ngIf="{ result: (filterResult$ | async), loading: isFiltering$ | async } as f">
+        <mat-option *ngIf="f.isEmpty" disabled>
+          Keine Ergebnisse
+        </mat-option>
+        <mat-option *ngIf="f.loading" disabled>
+          Lade...
+        </mat-option>
+        <ng-container *ngIf="!f.isEmpty && !f.loading">
+          <mat-option *ngFor="let option of f.result?.elements">
+            {{ option.name }}
+          </mat-option>
+        </ng-container>
+      </ng-container>
+    </mat-autocomplete>
+
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</form>
+
+
+
+<!--
+<form [formGroup]="form">
+  <mat-form-field [appearance]="'outline'">
+    <mat-label>Label</mat-label>
+    <app-search-select
+      formControlName="user"
+      [options]="users"
+      [displayOption]="test.displayUserFn"
+      [optionIncludes]="test.userIncludesFn"
+      required
+    ></app-search-select>
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</form>
+-->
+
 <div class="pageNotFound">
   <h1>Oops!</h1>
   <img [src]="'assets/404.png'" alt="Fehler: 404 - Seite nicht gefunden" />

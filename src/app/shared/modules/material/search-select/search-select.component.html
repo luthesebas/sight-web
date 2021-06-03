@@ -1,0 +1,29 @@
+
+<form class="example-form">
+	<mat-form-field class="example-full-width">
+		<mat-label>Assignee</mat-label>
+
+		<input
+      matInput
+      type="text"
+      [matAutocomplete]="auto"
+    />
+		<mat-autocomplete #auto="matAutocomplete" [displayWith]="displayValue">
+			<ng-container *ngIf="{ isFiltering: (isFiltering$ | async), options: (filteredOptions$ | async)} as data">
+        <ng-container *ngIf="!data.isFiltering && data.options?.length > 0">
+          <mat-option *ngFor="let option of data.options" [value]="option">
+            {{ displayOption(option) }}
+          </mat-option>
+        </ng-container>
+        <mat-option *ngIf="!data.isFiltering && data.options?.length === 0" class="no-result-option" disabled>
+          No elements found
+        </mat-option>
+        <!-- TODO: Center mat-spinner -->
+        <mat-option *ngIf="data.isFiltering" class="loader-option" disabled>
+            <mat-spinner diameter="36"></mat-spinner>
+        </mat-option>
+      </ng-container>
+		</mat-autocomplete>
+
+	</mat-form-field>
+</form>
