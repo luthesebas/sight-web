@@ -1,5 +1,9 @@
-:host {
-    position: relative;
+.carousel-slide {
+    display: none;
     width: 100%;
     margin: 0;
+
+    &.active {
+        display: block;
+    }
 }
