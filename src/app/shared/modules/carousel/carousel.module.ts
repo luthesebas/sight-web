@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 
 import { MaterialModule } from '../material/material.module';
-
+import {
+    CarouselSlideComponent
+} from './components/carousel-slide/carousel-slide.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { CarouselSlideComponent } from './components/carousel-slide/carousel-slide.component';
 
 @NgModule({
     declarations: [CarouselComponent, CarouselSlideComponent],
