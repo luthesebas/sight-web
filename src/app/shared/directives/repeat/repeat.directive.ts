@@ -1,4 +1,4 @@
-import { Directive, TemplateRef, ViewContainerRef, Input } from '@angular/core';
+import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 export class RepeatContext {
     constructor(readonly $implicit: number) {}
@@ -16,8 +16,8 @@ export class RepeatDirective {
     ) {}
 
     @Input()
-    set appRepeatOf(times: number) {
-        const safeTimes = Math.max(0, Math.min(times, this.MAX_TIMES));
+    set appRepeatOf(times: number | null) {
+        const safeTimes = Math.max(0, Math.min(times ?? 0, this.MAX_TIMES));
         const alreadyRepeated = this.container.length;
 
         if (safeTimes < alreadyRepeated) {
@@ -38,7 +38,7 @@ export class RepeatDirective {
 
     private removeViews(amount: number) {
         for (let i = 0; i < amount; i++) {
-            this.container.remove(); // Remove last view in container
+            this.container.remove();
         }
     }
 }
